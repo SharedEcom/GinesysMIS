@@ -1,0 +1,57 @@
+<!-- <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist"></ul> -->
+<div class="container">
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills nav-justified m-3" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+                role="tab" aria-controls="home" aria-selected="true">Home</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
+                role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button"
+                role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
+                role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+        </li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="row g-2 d-flex justify-content-between align-items-justify">
+                    <div class="col-lg-2 mb-3">
+                        <label for="barcode" class="form-label">Enter Barcode</label>
+                    </div>
+                    <div class="col-lg-3 mb-3">
+                        <input type="text" class="form-control" id="barcode" placeholder="123456789">
+                    </div>
+                    <div class="col-lg-2 mb-3">
+                        <label for="quantity" class="form-label">Print Quantity</label>
+                    </div>
+                    <div class="col-lg-2 mb-3">
+                        <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3">
+                    </div>
+                    <div class="col-lg-1 mb-3 mx-2">
+                        <button class="btn btn-success"><span class="material-icons-outlined">
+                                add_circle
+                            </span></button>
+                    </div>
+                    <div class="col-lg-1 mb-3 mx-4">
+                        <button class="btn btn-success"><span class="material-icons-outlined">
+                                info
+                            </span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profiles</div>
+        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Messages</div>
+        <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">Settings</div>
+    </div>
+</div>

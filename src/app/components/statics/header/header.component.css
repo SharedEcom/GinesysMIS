@@ -1,0 +1,27 @@
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+}
+
+.dropdown-menu li {
+    position: relative;
+}
+
+.dropdown-menu .dropdown-submenu {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: -7px;
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu {
+    display: block;
+}
+
+.dropdown-menu>li:hover>.dropdown-submenu:hover {
+    display: block;
+}
+
+.dropdown-submenu>li:hover>.dropdown-submenu {
+    display: block;
+}
