@@ -7,19 +7,18 @@
                 role="tab" aria-controls="home" aria-selected="true">Home</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-success" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+            <button class="nav-link text-success" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-success" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button"
-                role="tab" aria-controls="messages" aria-selected="false">Messages</button>
+            <button class="nav-link text-success" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
+                type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-success" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
-                role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+            <button class="nav-link text-dark" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
+                type="button" role="tab" aria-controls="settings" aria-selected="false">Item Information</button>
         </li>
     </ul>
-
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -48,6 +47,173 @@
         </div>
         <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profiles</div>
         <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Messages</div>
-        <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">Settings</div>
+        <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+            <div class="row">
+                <div class="col-2">
+                    <p class="fs-3">Division</p>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown" id="division">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">api</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="fs-3">Section</p>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown" id="section">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">Api</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="fs-6">Department</p>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown" id="Department">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item fs-5" href="#">API</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="fs-3">Article</p>
+                </div>
+                <div class="col-5">
+                    <div class="dropdown" id="Article">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item" href="#">API</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" id="ItemProp1">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h5> <b> Item Attributes </b> </h5>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#Itemaccordion">
+                        <div class="accordion-body">
+                            <strong>Cat1</strong> <code> : </code>catAPI1
+                            <strong>Cat2</strong> <code> : </code>catAPI2
+                            <strong>Cat3</strong> <code> : </code>catAPI3
+                            <strong>Cat4</strong> <code> : </code>catAPI4
+                            <strong>Cat5</strong> <code> : </code>catAPI5
+                            <strong>Cat6</strong> <code> : </code>catAPI6
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h1 class="accordion-header " id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h5> <b> Item Pricing </b> </h5>
+                        </button>
+                    </h1>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#Itemaccordion">
+                        <div class="accordion-body">
+                            <strong>Standard Price </strong> <code> : </code> 9999.00
+                            <strong>MRP </strong> <code> : </code> 9999.00
+                            <strong>Last In Price </strong> <code> : </code> 9999.00
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h5> <b> Item Image </b> </h5>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#Itemaccordion">
+                        <div class="accordion-body">
+                            <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="10000">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="../../../../assets/images/1.jpg" class="d-block w-100"
+                                                    alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>First slide label</h5>
+                                            <p>Some representative placeholder content for the first slide.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="../../../../assets/images/2.jpg" class="d-block w-100"
+                                                    alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Second slide label</h5>
+                                            <p>Some representative placeholder content for the second slide.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="../../../../assets/images/3.jpg" class="d-block w-100"
+                                                    alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Third slide label</h5>
+                                            <p>Some representative placeholder content for the third slide.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button"
+                                    data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button"
+                                    data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
