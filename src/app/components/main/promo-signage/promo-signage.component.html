@@ -3,8 +3,8 @@
     <!-- Nav tabs -->
     <ul class="nav nav-pills nav-justified m-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active text-warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true">Barcode </button>
+            <button class="nav-link active text-warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                type="button" role="tab" aria-controls="home" aria-selected="true">Barcode </button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link text-warning" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
@@ -22,9 +22,9 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="d-flex justify-content-center align-items-center">
+            <div class="">
                 <div class="row g-2 d-flex justify-content-between align-items-justify">
-                    <div class="col-lg-2 mb-3">
+                    <div class="col-lg-1 mb-3">
                         <label for="barcode" class="form-label">Enter Barcode</label>
                     </div>
                     <div class="col-lg-2 mb-4">
@@ -33,33 +33,34 @@
                     <div class="col-lg-2 mb-4">
                         <label for="quantity" class="form-label">Print Quantity</label>
                     </div>
-                    <div class="col-lg-2 mb-4">
+                    <div class="col-lg-1 mb-4">
                         <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3">
                     </div>
-                    <div class="col-lg-2 mb-4 dropdown">
-                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          Sinage Type
+                    <div class="col-lg-2 mb-4 btn-group">
+                        <button type="button" class="btn btn-success">Sinage Type</button>
+                        <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
-                        <div class="dropdown-menu"> <!---</div> aria-labelledby="dropdownMenuButton">-->
-                            <a class="dropdown-item" href="#">SAVE Format</a>
-                            <a class="dropdown-item" href="#">Buy x Get y FREE</a>
-                            <a class="dropdown-item" href="#">% Off Format</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Power Pricing</a>
-                            <a class="dropdown-item" href="#">Selling Price Format</a>
-                            <a class="dropdown-item" href="#">On Pack Promo Offer</a>
-                            <a class="dropdown-item" href="#">Selling Price Format</a>
-                        </div>
-                      </div>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">SAVE Format</a></li>
+                            <li><a class="dropdown-item" href="#">Buy x Get y FREE</a></li>
+                            <li><a class="dropdown-item" href="#">% Off Format</a></li>
+                            <li class="dropdown-divider">
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Power Pricing</a></li>
+                            <li><a class="dropdown-item" href="#">Selling Price Format</a></li>
+                            <li><a class="dropdown-item" href="#">On Pack Promo Offer</a></li>
+                            <li><a class="dropdown-item" href="#">Selling Price Format</a></li>
+                        </ul>
+                    </div>
                     <div class="col-lg-2 mb-4 ">
                         <button class="btn btn-success">Add</button>
-<!---                    </div>
+                    </div>
                     <div class="col-lg-2 mb-4 ">
                         <button class="btn btn-success">Info</button>
-                    </div>  
-                    <div class="col-lg-2 mb-4 ">
-                        <label for="barcode" class="form-label">...</label> -->
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,13 +226,13 @@
                                         </div>
                                     </div>
                                 </div>
-                                <button class="carousel-control-prev" type="button"
-                                    data-bs-target="#carouselItemInfo" data-bs-slide="prev">
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselItemInfo"
+                                    data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                 </button>
-                                <button class="carousel-control-next" type="button"
-                                    data-bs-target="#carouselItemInfo" data-bs-slide="next">
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselItemInfo"
+                                    data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
                                 </button>
