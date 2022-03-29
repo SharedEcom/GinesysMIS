@@ -3,19 +3,19 @@
     <!-- Nav tabs -->
     <ul class="nav nav-pills nav-justified m-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
+            <button class="nav-link active text-warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
                 role="tab" aria-controls="home" aria-selected="true">Barcode </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-dark" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+            <button class="nav-link text-warning" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                 type="button" role="tab" aria-controls="profile" aria-selected="false">EAN Code</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-dark" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
+            <button class="nav-link text-warning" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
                 type="button" role="tab" aria-controls="messages" aria-selected="false">Messages</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link text-dark" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
+            <button class="nav-link text-warning" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
                 type="button" role="tab" aria-controls="settings" aria-selected="false">Item Information</button>
         </li>
     </ul>
@@ -27,21 +27,39 @@
                     <div class="col-lg-2 mb-3">
                         <label for="barcode" class="form-label">Enter Barcode</label>
                     </div>
-                    <div class="col-lg-3 mb-3">
+                    <div class="col-lg-2 mb-4">
                         <input type="text" class="form-control" id="barcode" placeholder="123456789">
                     </div>
-                    <div class="col-lg-2 mb-3">
+                    <div class="col-lg-2 mb-4">
                         <label for="quantity" class="form-label">Print Quantity</label>
                     </div>
-                    <div class="col-lg-2 mb-3">
+                    <div class="col-lg-2 mb-4">
                         <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3">
                     </div>
-                    <div class="col-lg-1 mb-3 mx-2">
+                    <div class="col-lg-2 mb-4 dropdown">
+                        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Sinage Type
+                        </button>
+                        <div class="dropdown-menu"> <!---</div> aria-labelledby="dropdownMenuButton">-->
+                            <a class="dropdown-item" href="#">SAVE Format</a>
+                            <a class="dropdown-item" href="#">Buy x Get y FREE</a>
+                            <a class="dropdown-item" href="#">% Off Format</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Power Pricing</a>
+                            <a class="dropdown-item" href="#">Selling Price Format</a>
+                            <a class="dropdown-item" href="#">On Pack Promo Offer</a>
+                            <a class="dropdown-item" href="#">Selling Price Format</a>
+                        </div>
+                      </div>
+                    <div class="col-lg-2 mb-4 ">
                         <button class="btn btn-success">Add</button>
-                    </div>
-                    <div class="col-lg-1 mb-3 mx-4">
+<!---                    </div>
+                    <div class="col-lg-2 mb-4 ">
                         <button class="btn btn-success">Info</button>
-                    </div>
+                    </div>  
+                    <div class="col-lg-2 mb-4 ">
+                        <label for="barcode" class="form-label">...</label> -->
+                    </div> 
                 </div>
             </div>
         </div>
@@ -59,7 +77,7 @@
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">api</a></li>
+                            <li><a class="dropdown-item" href="#">Div Api</a></li>
                         </ul>
                     </div>
                 </div>

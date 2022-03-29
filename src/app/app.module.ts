@@ -8,6 +8,7 @@ import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/main/home/home.component';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
+import { ExtraUdfComponent } from './components/main/extra-udf/extra-udf.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { PromoSignageComponent } from './components/main/promo-signage/promo-sig
     HeaderComponent,
     LoginComponent,
     HomeComponent,
-    PromoSignageComponent
+    PromoSignageComponent,
+    ExtraUdfComponent
   ],
   imports: [
     BrowserModule,
