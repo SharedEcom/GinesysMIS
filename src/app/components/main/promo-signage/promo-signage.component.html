@@ -22,43 +22,46 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="">
-                <div class="row g-2 d-flex justify-content-between align-items-justify">
-                    <div class="col-lg-1 mb-3">
+            <div class="container my-4 mx-5">
+                <div *ngFor="let barcodeModel of barcodeModelList; let i = index"
+                    class="row g-2 d-flex justify-content-center align-items-justify">
+                    <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
                         <label for="barcode" class="form-label">Enter Barcode</label>
                     </div>
-                    <div class="col-lg-2 mb-4">
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                         <input type="text" class="form-control" id="barcode" placeholder="123456789">
                     </div>
-                    <div class="col-lg-2 mb-4">
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                         <label for="quantity" class="form-label">Print Quantity</label>
                     </div>
-                    <div class="col-lg-1 mb-4">
+                    <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
                         <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3">
                     </div>
-                    <div class="col-lg-2 mb-4 btn-group">
+                    <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
                         <button type="button" class="btn btn-success">Sinage Type</button>
                         <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">SAVE Format</a></li>
-                            <li><a class="dropdown-item" href="#">Buy x Get y FREE</a></li>
-                            <li><a class="dropdown-item" href="#">% Off Format</a></li>
+                            <li><a class="dropdown-item">SAVE Format</a></li>
+                            <li><a class="dropdown-item">Buy x Get y FREE</a></li>
+                            <li><a class="dropdown-item">% Off Format</a></li>
                             <li class="dropdown-divider">
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="#">Power Pricing</a></li>
-                            <li><a class="dropdown-item" href="#">Selling Price Format</a></li>
-                            <li><a class="dropdown-item" href="#">On Pack Promo Offer</a></li>
-                            <li><a class="dropdown-item" href="#">Selling Price Format</a></li>
+                            <li><a class="dropdown-item">Power Pricing</a></li>
+                            <li><a class="dropdown-item">Selling Price Format</a></li>
+                            <li><a class="dropdown-item">On Pack Promo Offer</a></li>
+                            <li><a class="dropdown-item">Selling Price Format</a></li>
                         </ul>
                     </div>
-                    <div class="col-lg-2 mb-4 ">
-                        <button class="btn btn-success">Add</button>
+                    <div *ngIf="i==0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
                     </div>
-                    <div class="col-lg-2 mb-4 ">
+                    <div *ngIf="i!=0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <button class="btn btn-danger" (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                         <button class="btn btn-success">Info</button>
                     </div>
                 </div>
@@ -78,7 +81,7 @@
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Div Api</a></li>
+                            <li><a class="dropdown-item">Div Api</a></li>
                         </ul>
                     </div>
                 </div>
@@ -92,7 +95,7 @@
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">Api</a></li>
+                            <li><a class="dropdown-item">Api</a></li>
                         </ul>
                     </div>
                 </div>
@@ -106,7 +109,7 @@
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item fs-5" href="#">API</a></li>
+                            <li><a class="dropdown-item fs-5">API</a></li>
                         </ul>
                     </div>
                 </div>
@@ -120,7 +123,7 @@
                             Dropdown button
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#">API</a></li>
+                            <li><a class="dropdown-item">API</a></li>
                         </ul>
                     </div>
                 </div>
@@ -136,6 +139,31 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#Itemaccordion">
                         <div class="accordion-body">
+                            <div class="d-flex justify-content-center align-items-justify">
+                                <h3 class="h3"><u>Category</u></h3>
+                            </div>
+                            <table class="mx-2 table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>First</th>
+                                        <th>Last</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>@twitter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                             <strong>Cat1</strong> <code> : </code>catAPI1
                             <strong>Cat2</strong> <code> : </code>catAPI2
                             <strong>Cat3</strong> <code> : </code>catAPI3
