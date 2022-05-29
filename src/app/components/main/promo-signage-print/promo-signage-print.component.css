@@ -1,0 +1,48 @@
+.dashed-border {
+    border-style: dashed;
+}
+
+.data-row {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.article-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    padding-top: 1;
+    padding-left: 1;
+}
+
+.banner-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding-top: 1;
+    padding-left: 1;
+}
+
+.mrp-name {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    padding-top: 1;
+    padding-left: 1;
+}
+
+.custom-width {
+    width: 2.5in;
+}
+
+.custom-height {
+    height: 1.5in;
+}
+
+.col {
+    padding: 0%;
+    margin: 0%;
+}
+
+@media print {
+    .custom-column {
+        page-break-inside: avoid;
+    }
+}
