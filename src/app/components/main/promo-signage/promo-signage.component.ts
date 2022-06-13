@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BarcodeModel } from '../models/promo-signage/Barcode-model';
 import { BarcodeSaveResponse } from '../models/promo-signage/login-response';
 import { PromoSignageService } from '../services/promo-signage/promo-signage.service';
+import { ToasterServiceService } from '../services/toast/toaster-service.service';
 
 @Component({
   selector: 'app-promo-signage',
@@ -26,7 +27,7 @@ export class PromoSignageComponent implements OnInit {
     { id: 7, text: "Selling Price Format" },
   ]
 
-  constructor(private promoSignageService: PromoSignageService, private router: Router) { }
+  constructor(private promoSignageService: PromoSignageService, private router: Router, private toastr: ToasterServiceService) { }
 
   ngOnInit(): void {
     this.barcodeModelList.push(new BarcodeModel())
@@ -59,6 +60,9 @@ export class PromoSignageComponent implements OnInit {
 
       if (data.serviceMessage.code === 201) {
         console.log('Data saved successfully')
+        this.toastr.showSuccess(data.serviceMessage.message, data.serviceMessage.type)
+      } else {
+        this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
       }
     })
     this.barcodeModelList = Array<BarcodeModel>();
@@ -68,4 +72,8 @@ export class PromoSignageComponent implements OnInit {
   printBarcodes() {
     this.router.navigateByUrl('/promo-signage-print')
   }
+
+  // showSuccess() {
+  //   this.toastr.showSuccess('Success Message', 'Success Title')
+  // }
 }

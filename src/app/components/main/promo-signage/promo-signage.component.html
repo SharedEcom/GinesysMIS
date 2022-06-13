@@ -3,8 +3,8 @@
     <!-- Nav tabs -->
     <ul class="nav nav-pills nav-justified m-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active text-Warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                type="button" role="tab" aria-controls="home" aria-selected="true"><strong>Barcode </strong></button>
+            <button class="nav-link active text-warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                type="button" role="tab" aria-controls="home" aria-selected="true"><strong>Barcode</strong></button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link text-warning" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
@@ -44,9 +44,11 @@
                                 [(ngModel)]="barcodeModel.printQuantity">
                         </div>
                         <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
-                            <select class="form-select" aria-label="Sinage Type" (change)="assignSignage(barcodeModel, $event)">
+                            <select class="form-select" aria-label="Sinage Type"
+                                (change)="assignSignage(barcodeModel, $event)">
                                 <option selected disabled>Sinage Type</option>
-                                    <option *ngFor="let signageType of signageTypeList; let j = index" value="{{j}}">{{ signageType.text }}</option>
+                                <option *ngFor="let signageType of signageTypeList; let j = index" value="{{j}}">{{
+                                    signageType.text }}</option>
                             </select>
                         </div>
                         <div *ngIf="i==0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
@@ -64,6 +66,7 @@
                 <div class="row justify-content-end">
                     <div class="col-2">
                         <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>
+                        <!-- <button class="btn btn-success" (click)="showSuccess()">Submit</button> -->
                     </div>
                     <div class="col-2">
                         <button class="btn btn-success" (click)="printBarcodes()">Print</button>

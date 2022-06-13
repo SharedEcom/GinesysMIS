@@ -12,6 +12,8 @@ import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
 import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
 import { ExtraUdfComponent } from './components/main/extra-udf/extra-udf.component';
 import { PromoSignagePrintComponent } from './components/main/promo-signage-print/promo-signage-print.component';
+import { CommingSoonComponent } from './components/statics/comming-soon/comming-soon.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { PromoSignagePrintComponent } from './components/main/promo-signage-prin
     HomeComponent,
     PromoSignageComponent,
     ExtraUdfComponent,
-    PromoSignagePrintComponent
+    PromoSignagePrintComponent,
+    CommingSoonComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,8 @@ import { PromoSignagePrintComponent } from './components/main/promo-signage-prin
       preserveScrollPosition: true
     }),
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

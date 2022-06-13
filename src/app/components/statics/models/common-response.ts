@@ -1,7 +1,7 @@
 export class CommonResponse {
     code: number
-    type: String
-    message: String
+    type: string
+    message: string
 
     constructor() {
         this.code = 0;
