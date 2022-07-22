@@ -1,5 +1,5 @@
 .dashed-border {
-    border-style: dashed;
+    border-style: none;
 }
 
 .data-row {
@@ -9,27 +9,27 @@
 
 .article-name {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 15px;
+    font-size: 8;
     padding-top: 1;
-    padding-left: 1;
+    padding-left: 25;
 }
 
 .banner-name {
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 20px;
+    font-family: 'Bookman Old Style', Times, serif;
+    font-size: 20;
     padding-top: 1;
-    padding-left: 1;
+    padding-left: 25;
 }
 
 .mrp-name {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 12px;
+    font-size: 8;
     padding-top: 1;
-    padding-left: 1;
+    padding-left: 25;
 }
 
 .custom-width {
-    width: 2.5in;
+    width: 33%;
 }
 
 .custom-height {

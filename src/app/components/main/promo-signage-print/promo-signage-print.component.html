@@ -1,24 +1,24 @@
 <div class="d-flex justify-content-evenly align-self-center mt-5 ms-3">
     <div class="row">
-        <div class="col-4 dashed-border custom-height custom-width pt-2 ps-4"
+        <div class="col-4 dashed-border custom-height custom-width pt-2 ps-6"
             *ngFor="let promoSignage of promoSignagePrintResponse.result; let i=index;">
             <div class="custom-column">
                 <div class="row data-row" style="height: 50px;">
-                    <div class="col mb-0 me-2">
+                    <div class="col-10 mb-0 me-2">
                         <p class="article-name"> {{ promoSignage.articleName }}</p>
                     </div>
                 </div>
                 <div class="row data-row">
-                    <div class="col">
+                    <div class="col-10">
                         <p class="banner-name"><strong>{{ promoSignage.bannerName }}</strong></p>
                     </div>
                 </div>
                 <div class="row data-row">
-                    <div class="col-4 p-0">
+                    <div class="col p-10">
                         <p class="mrp-name">MRP: <del>&#x20b9; {{ promoSignage.mrp }}</del></p>
                     </div>
                     <div class="col-8 p-0">
-                        <p class="mrp-name">V MART PRICE &#x20b9; {{ promoSignage.mrp }}</p>
+                        <p class="mrp-name">OUR PRICE <strong>&#x20b9; {{ promoSignage.mrp }}</strong></p>
                     </div>
                 </div>
             </div>
