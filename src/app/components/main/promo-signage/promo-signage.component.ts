@@ -1,5 +1,6 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from '../../auth/services/session/session.service';
 import { BarcodeModel } from '../models/promo-signage/Barcode-model';
 import { BarcodeSaveResponse } from '../models/promo-signage/login-response';
 import { NavbarService } from '../services/navbar/navbar.service';
@@ -31,16 +32,24 @@ export class PromoSignageComponent implements OnInit {
     { id: 8, text: "Selling Price Format" },
   ]
 
-  constructor(private promoSignageService: PromoSignageService, private router: Router, private navbarService: NavbarService, public toastService: ToastService) { }
+  constructor(private promoSignageService: PromoSignageService,
+    private router: Router,
+    private navbarService: NavbarService,
+    public toastService: ToastService,
+    private sessionService: SessionService) { }
 
   ngOnInit(): void {
     this.barcodeModelList.push(new BarcodeModel())
-    console.log(this.navbarService.isNavbarVisible)
 
     if (localStorage.getItem('authToken') === null) {
       this.router.navigateByUrl("/")
     } else {
-      this.isNavbarVisible = this.navbarService.isNavbarVisible
+      if (!this.sessionService.tokenExpired(localStorage.getItem('authToken') || '')) {
+        this.navbarService.isNavbarVisible = true
+        this.isNavbarVisible = this.navbarService.isNavbarVisible
+      } else {
+        this.router.navigateByUrl("/")
+      }
     }
   }
 

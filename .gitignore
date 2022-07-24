@@ -48,6 +48,8 @@ Thumbs.db
 
 #Custom
 .vscode/*
-angular.json
-package.json
-package-lock.json
+/angular.json
+/package.json
+/package-lock.json
+/src/polyfills.ts
+/tsconfig.json

@@ -67,21 +67,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-end">
-                    <div class="col-2">
-                        <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>
-                        <!-- <button class="btn btn-success" (click)="showSuccess()">Submit</button> -->
+                <div class="row g-2 d-flex justify-content-center align-items-justify">
+                    <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
+                        &nbsp;
                     </div>
-                    <div class="col-2">
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                         <button class="btn btn-success" (click)="printBarcodes()">Print</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profiles</div>
-        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Messages</div>
+        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+            <!-- COMMING SOON -->
+            <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
+                <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
+                    <app-comming-soon></app-comming-soon>
+                </div>
+            </div>
+        </div>
         <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-            <div class="row">
+            <!-- COMMING SOON -->
+            <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
+                <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
+                    <app-comming-soon></app-comming-soon>
+                </div>
+            </div>
+            <!-- <div class="row">
                 <div class="col-2">
                     <p class="fs-3">Division</p>
                 </div>
@@ -279,7 +306,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
