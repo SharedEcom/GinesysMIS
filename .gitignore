@@ -53,3 +53,5 @@ Thumbs.db
 /package-lock.json
 /src/polyfills.ts
 /tsconfig.json
+tsconfig.json
+src/polyfills.ts
