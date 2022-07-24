@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavbarService } from '../../main/services/navbar/navbar.service';
 import { LoginRequest } from '../models/login-request';
 import { LoginResponse } from '../models/login-response';
 import { LoginServiceService } from '../services/login/login-service.service';
@@ -11,18 +12,21 @@ import { LoginServiceService } from '../services/login/login-service.service';
 })
 export class LoginComponent implements OnInit {
 
+  isNavbarVisible?: boolean
+
   username!: string
   password!: string
 
   loginRequest: LoginRequest;
   loginResponse: LoginResponse;
 
-  constructor(private loginService: LoginServiceService, private router: Router) {
+  constructor(private loginService: LoginServiceService, private router: Router, private navbarService: NavbarService) {
     this.loginRequest = new LoginRequest()
     this.loginResponse = new LoginResponse()
   }
 
   ngOnInit(): void {
+    this.isNavbarVisible = this.navbarService.isNavbarVisible
   }
 
   login(username: string, password: string) {
@@ -40,8 +44,8 @@ export class LoginComponent implements OnInit {
           localStorage.clear()
           this.assignTokenAndNavigate()
         }
+        this.navbarService.showNavbar();
       }
-
     })
   }
 

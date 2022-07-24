@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavbarService } from '../../main/services/navbar/navbar.service';
 
 @Component({
   selector: 'app-comming-soon',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommingSoonComponent implements OnInit {
 
-  constructor() { }
+  isNavbarVisible: boolean = false;
+
+  constructor(private router: Router, private navbarService: NavbarService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('authToken') === null) {
+      this.router.navigateByUrl("/")
+    } else {
+      this.isNavbarVisible = this.navbarService.isNavbarVisible
+    }
   }
 
 }

@@ -8,7 +8,7 @@ import { PromoSignageResponse } from '../../models/promo-signage-print/promo-sig
 })
 export class PromoSignagePrintService {
 
-  BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
+  BASE_URL: string = "http://localhost:8080/v1/promo-signage/"
   SAVE_BARCODE: String = "barcode/print"
   BEARER = 'Bearer '
 

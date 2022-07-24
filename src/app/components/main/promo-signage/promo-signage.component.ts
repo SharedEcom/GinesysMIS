@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BarcodeModel } from '../models/promo-signage/Barcode-model';
 import { BarcodeSaveResponse } from '../models/promo-signage/login-response';
+import { NavbarService } from '../services/navbar/navbar.service';
 import { PromoSignageService } from '../services/promo-signage/promo-signage.service';
 import { ToasterServiceService } from '../services/toast/toaster-service.service';
 
@@ -12,6 +13,8 @@ import { ToasterServiceService } from '../services/toast/toaster-service.service
 })
 export class PromoSignageComponent implements OnInit {
 
+  isNavbarVisible: boolean = false;
+
   promoSignageArraySize = 1
   barcodeModelList = Array<BarcodeModel>();
 
@@ -19,18 +22,26 @@ export class PromoSignageComponent implements OnInit {
 
   signageTypeList = [
     { id: 1, text: "SAVE Format" },
-    { id: 2, text: "Buy x Get y FREE" },
-    { id: 3, text: "% Off Format" },
-    { id: 4, text: "Power Pricing" },
-    { id: 5, text: "Selling Price Format" },
-    { id: 6, text: "On Pack Promo Offer" },
-    { id: 7, text: "Selling Price Format" },
+    { id: 2, text: "Buy 1 Get 1 FREE" },
+    { id: 3, text: "Buy 2 Get 1 FREE" },
+    { id: 4, text: "% Off Format" },
+    { id: 5, text: "Power Pricing" },
+    { id: 6, text: "Selling Price Format" },
+    { id: 7, text: "On Pack Promo Offer" },
+    { id: 8, text: "Selling Price Format" },
   ]
 
-  constructor(private promoSignageService: PromoSignageService, private router: Router, private toastr: ToasterServiceService) { }
+  constructor(private promoSignageService: PromoSignageService, private router: Router, private toastr: ToasterServiceService, private navbarService: NavbarService) { }
 
   ngOnInit(): void {
     this.barcodeModelList.push(new BarcodeModel())
+    console.log(this.navbarService.isNavbarVisible)
+
+    if (localStorage.getItem('authToken') === null) {
+      this.router.navigateByUrl("/")
+    } else {
+      this.isNavbarVisible = this.navbarService.isNavbarVisible
+    }
   }
 
   increasePromoArraySize() {
@@ -73,7 +84,8 @@ export class PromoSignageComponent implements OnInit {
     this.router.navigateByUrl('/promo-signage-print')
   }
 
-  // showSuccess() {
-  //   this.toastr.showSuccess('Success Message', 'Success Title')
-  // }
+  showSuccess() {
+    const saveBarcodeToast = document.getElementById('saveBarcodeToast')
+    // const toast = new bootstrap
+  }
 }
