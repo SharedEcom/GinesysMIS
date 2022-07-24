@@ -13,7 +13,8 @@ import { PromoSignageComponent } from './components/main/promo-signage/promo-sig
 import { ExtraUdfComponent } from './components/main/extra-udf/extra-udf.component';
 import { PromoSignagePrintComponent } from './components/main/promo-signage-print/promo-signage-print.component';
 import { CommingSoonComponent } from './components/statics/comming-soon/comming-soon.component';
-import { ToastrModule } from 'ngx-toastr';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ToastComponent } from './components/statics/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     PromoSignageComponent,
     ExtraUdfComponent,
     PromoSignagePrintComponent,
-    CommingSoonComponent
+    CommingSoonComponent,
+    ToastComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,7 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     HttpClientModule,
     FormsModule,
-    ToastrModule.forRoot(),
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

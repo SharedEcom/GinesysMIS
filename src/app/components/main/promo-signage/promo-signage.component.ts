@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { BarcodeModel } from '../models/promo-signage/Barcode-model';
 import { BarcodeSaveResponse } from '../models/promo-signage/login-response';
 import { NavbarService } from '../services/navbar/navbar.service';
 import { PromoSignageService } from '../services/promo-signage/promo-signage.service';
-import { ToasterServiceService } from '../services/toast/toaster-service.service';
+import { ToastService } from '../services/toast/toast.service';
 
 @Component({
   selector: 'app-promo-signage',
@@ -31,7 +31,7 @@ export class PromoSignageComponent implements OnInit {
     { id: 8, text: "Selling Price Format" },
   ]
 
-  constructor(private promoSignageService: PromoSignageService, private router: Router, private toastr: ToasterServiceService, private navbarService: NavbarService) { }
+  constructor(private promoSignageService: PromoSignageService, private router: Router, private navbarService: NavbarService, public toastService: ToastService) { }
 
   ngOnInit(): void {
     this.barcodeModelList.push(new BarcodeModel())
@@ -66,14 +66,16 @@ export class PromoSignageComponent implements OnInit {
     }
 
     let response = this.promoSignageService.saveBarcode(request)
-    response.subscribe(data => {
+    response.subscribe((data: BarcodeSaveResponse) => {
       this.barcodeSaveResponse = data
-
-      if (data.serviceMessage.code === 201) {
+      if (this.barcodeSaveResponse.serviceMessage.code == 201) {
         console.log('Data saved successfully')
-        this.toastr.showSuccess(data.serviceMessage.message, data.serviceMessage.type)
+        // this.showSuccess()
+        this.showCustomSuccess(data.serviceMessage.type, data.serviceMessage.message, 10000);
+        // this.toastr.showSuccess(data.serviceMessage.message, data.serviceMessage.type)
       } else {
-        this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
+        this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
+        // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
       }
     })
     this.barcodeModelList = Array<BarcodeModel>();
@@ -84,8 +86,27 @@ export class PromoSignageComponent implements OnInit {
     this.router.navigateByUrl('/promo-signage-print')
   }
 
-  showSuccess() {
-    const saveBarcodeToast = document.getElementById('saveBarcodeToast')
-    // const toast = new bootstrap
+  showCustomSuccess(toastHeader: string, toastMessgae: string, delayValue: number) {
+    this.toastService.show(toastMessgae, { classname: 'bg-success text-light', delay: delayValue, header: toastHeader });
+  }
+
+  showCustomDanger(toastHeader: string, toastMessgae: string, delayValue: number) {
+    this.toastService.show(toastMessgae, { classname: 'bg-danger text-light', delay: delayValue, header: toastHeader });
+  }
+
+  // showDanger(dangerTpl: string | TemplateRef<any>) {
+  //   this.toastService.show(dangerTpl, { classname: 'bg-danger text-light', delay: 15000 });
+  // }
+
+  // showStandard() {
+  //   this.toastService.show('I am a standard toast');
+  // }
+
+  // showSuccess() {
+  //   this.toastService.show('I am a success toast', { classname: 'bg-success text-light', delay: 10000 });
+  // }
+
+  ngOnDestroy(): void {
+    this.toastService.clear();
   }
 }

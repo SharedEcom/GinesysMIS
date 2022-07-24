@@ -16,7 +16,7 @@ export class PromoSignageService {
 
   public saveBarcode(request: any): Observable<BarcodeSaveResponse> {
     const httpHeaders = new HttpHeaders().set("Authorization", this.BEARER + localStorage.getItem('authToken'))
-    return this.httpClient.post<BarcodeSaveResponse>(this.BASE_URL + this.SAVE_BARCODE, request, {headers: httpHeaders, responseType: 'text' as 'json'})
+    return this.httpClient.post<BarcodeSaveResponse>(this.BASE_URL + this.SAVE_BARCODE, request, {headers: httpHeaders})
   }
 
   
