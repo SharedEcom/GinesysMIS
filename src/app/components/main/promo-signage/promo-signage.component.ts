@@ -23,8 +23,8 @@ export class PromoSignageComponent implements OnInit {
 
   signageTypeList = [
     { id: 1, text: "SAVE Format" },
-    { id: 2, text: "Buy 1 Get 1 FREE" },
-    { id: 3, text: "Buy 2 Get 1 FREE" },
+    { id: 2, text: "BUY 1 GET 1 FREE" },
+    { id: 3, text: "BUY 2 GET 1 FREE" },
     { id: 4, text: "% Off Format" },
     { id: 5, text: "Power Pricing" },
     { id: 6, text: "Selling Price Format" },

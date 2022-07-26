@@ -37,8 +37,10 @@
                             <label for="barcode" class="form-label">Enter Barcode</label>
                         </div>
                         <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <input type="text" class="form-control" id="barcode" placeholder="123456789"
-                                [(ngModel)]="barcodeModel.barcode">
+                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
+                                [(ngModel)]="barcodeModel.barcode" (ngModelChange) ="barcodeModel.barcode = $event.toUpperCase()"> 
+<!--                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
+                                [(ngModel)]="barcodeModel.barcode"> -->  
                         </div>
                         <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                             <label for="quantity" class="form-label">Print Quantity</label>

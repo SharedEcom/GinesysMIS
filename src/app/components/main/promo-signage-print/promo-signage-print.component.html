@@ -8,15 +8,22 @@
                         <p class="article-name"> {{ promoSignage.articleName }}</p>
                     </div>
                 </div>
-                <div class="row data-row pb-0 mb-0" *ngIf="(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
-                    <div class="col-10">
+                <div class="row data-row pb-0 mb-0"
+                    *ngIf="(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
+                    <!-- <div class="col"> -->
                         <div class="row">
+                            <!-- <div class="d-flex justify-content-center"> -->
                             <p class="banner-name mb-0"><strong>{{ promoSignage.bannerName }}</strong></p>
-                            <p class="banner-name mb-2"><strong>FREE</strong></p>
-                        </div>
+                            <!-- </div> -->
+                            <!-- <div class="d-flex justify-content-center"> -->
+                            <p class="pb-12 banner-name mb-2"><strong>FREE</strong></p>
+                            <!-- </div> -->
+
+                        <!-- </div> -->
                     </div>
                 </div>
-                <div class="row data-row pb-0 mb-0" *ngIf="!(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
+                <div class="row data-row pb-0 mb-0"
+                    *ngIf="!(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
                     <div class="col-10">
                         <div class="row">
                             <p class="banner-name mb-4"><strong>{{ promoSignage.bannerName }}</strong></p>
@@ -24,11 +31,15 @@
                     </div>
                 </div>
                 <div class="row data-row">
-                    <div class="col-6 p-10 min-vw-100">
-                        <p class="mrp-name pe-0 me-0">MRP: <del>&#x20b9; {{ promoSignage.mrp }}</del></p>
+                    <div class="col-sm p-6 min-vw-100"
+                        *ngIf="(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
+                        <p class="mrp-name pe-0 me-0">MRP: {{ promoSignage.mrp }}</p>
                     </div>
-                    <div class="col-sm p-0 min-vw-100" *ngIf="!(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
-                        <p class="mrp-name ps-0 ms-0">OUR PRICE <strong>&#x20b9; {{ promoSignage.mrp }}</strong></p>
+                    <div class="col-sm p-6 min-vw-100"
+                        *ngIf="!(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
+                        <p class="mrp-name pe-0 me-0">MRP: <del>&#x20b9; {{ promoSignage.mrp }}</del> OUR PRICE
+                            <strong>&#x20b9; {{ promoSignage.mrp }}</strong>
+                        </p>
                     </div>
                 </div>
             </div>
