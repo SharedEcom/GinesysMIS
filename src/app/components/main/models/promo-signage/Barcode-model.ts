@@ -1,5 +1,5 @@
 export class BarcodeModel {
-    barcode: String
+    barcode: string
     printQuantity: number
     signageTypeCode: number
     signageTypeName: String

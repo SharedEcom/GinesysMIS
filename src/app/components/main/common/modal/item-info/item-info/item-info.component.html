@@ -1,0 +1,224 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one">
+    <ngb-panel title="Hirarechy" id="config-panel-one">
+        <ng-template ngbPanelContent>
+            <div class="row">
+                <div class="col-4">
+                    <b>Walk Label</b> {{ itemInfo.walking_LEVEL }}
+                </div>
+                <div class="col-4">
+                    <b>Division</b> {{ itemInfo.lev1GRPNAME }}
+                </div>
+                <div class="col-4">
+                    <b>Section</b> {{ itemInfo.lev2GRPNAME }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <b>Department</b> {{ itemInfo.grpname }}
+                </div>
+                <div class="col-4">
+                    <b>Article</b> {{ itemInfo.articlecode }} <b> - </b> {{ itemInfo.articlename }}
+                </div>
+                <!--                <div class="col-4">
+                    <b>Article Group</b> Article ArticleArticleArticleArticle API
+                </div> -->
+            </div>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Attributes">
+        <ng-template ngbPanelContent>
+            <div class="row">
+                <div class="col-4">
+                    <b>Attribute 1</b> {{ itemInfo.invattr1_NAME }}
+                </div>
+                <div class="col-4">
+                    <b>Attribute 2</b> {{ itemInfo.invattr2_NAME }}
+                </div>
+                <div class="col-4">
+                    <b>Attribute 3</b> {{ itemInfo.invattr3_NAME }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <b>Attribute 4</b> {{ itemInfo.invattr4_NAME }}
+                </div>
+                <div class="col-4">
+                    <b>Attribute 5</b> {{ itemInfo.invattr5_NAME }}
+                </div>
+                <div class="col-4">
+                    <b>Attribute 6</b> {{ itemInfo.invattr6_NAME }}
+                </div>
+            </div>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Category">
+        <ng-template ngbPanelContent>
+            <div class="row">
+                <!-- Cat 1-->
+                <div class="col-4" *ngIf="(itemInfo.cat1PROMPT==null)">
+                    <div class="Col=4">
+                        <b>Category 1</b> {{ itemInfo.cname1 }}
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="(itemInfo.cat1PROMPT!=null)">
+                    <div class="Col=4">
+                        <b>{{ itemInfo.cat1PROMPT }}</b> {{ itemInfo.cname1 }}
+                    </div>
+                </div>
+                <!-- Cat 2-->
+                <div class="col-4" *ngIf="(itemInfo.cat2PROMPT==null)">
+                    <div class="Col=4">
+                        <b>Category 2</b> {{ itemInfo.cname2 }}
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="(itemInfo.cat2PROMPT!=null)">
+                    <div class="Col=4">
+                        <b>{{ itemInfo.cat2PROMPT }}</b> {{ itemInfo.cname2 }}
+                    </div>
+                </div>
+                <!-- Cat 3-->
+                <div class="col-4" *ngIf="(itemInfo.cat3PROMPT==null)">
+                    <div class="Col=4">
+                        <b>Category 3</b> {{ itemInfo.cname3 }}
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="(itemInfo.cat3PROMPT!=null)">
+                    <div class="Col=4">
+                        <b>{{ itemInfo.cat3PROMPT }}</b> {{ itemInfo.cname3 }}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <!-- Cat 4-->
+                <div class="col-4" *ngIf="(itemInfo.cat4PROMPT==null)">
+                    <div class="Col=4">
+                        <b>Category 4</b> {{ itemInfo.cname4 }}
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="(itemInfo.cat4PROMPT!=null)">
+                    <div class="Col=4">
+                        <b>{{ itemInfo.cat4PROMPT }}</b> {{ itemInfo.cname4 }}
+                    </div>
+                </div>
+                <!-- Cat 5-->
+                <div class="col-4" *ngIf="(itemInfo.cat5PROMPT==null)">
+                    <div class="Col=4">
+                        <b>Category 5</b> {{ itemInfo.cname5 }}
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="(itemInfo.cat5PROMPT!=null)">
+                    <div class="Col=4">
+                        <b>{{ itemInfo.cat5PROMPT }}</b> {{ itemInfo.cname5 }}
+                    </div>
+                </div>
+                <!-- Cat 6-->
+                <div class="col-4" *ngIf="(itemInfo.cat6PROMPT==null)">
+                    <div class="Col=4">
+                        <b>Category 6</b> {{ itemInfo.cname6 }}
+                    </div>
+                </div>
+                <div class="col-4" *ngIf="(itemInfo.cat6PROMPT!=null)">
+                    <div class="Col=4">
+                        <b>{{ itemInfo.cat6PROMPT }}</b> {{ itemInfo.cname6 }}
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Descriptions">
+        <ng-template ngbPanelContent>
+            <div class="row">
+                <div class="col-4">
+                    <b>Description 1</b> {{ itemInfo.itemdesc1 }}
+                </div>
+                <div class="col-4">
+                    <b>Description 2</b> {{ itemInfo.itemdesc2 }}
+                </div>
+                <div class="col-4">
+                    <b>Description 3</b> {{ itemInfo.itemdesc3 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <b>Description 4</b> {{ itemInfo.itemdesc4 }}
+                </div>
+                <div class="col-4">
+                    <b>Description 5</b> {{ itemInfo.itemdesc5 }}
+                </div>
+                <div class="col-4">
+                    <b>Description 6</b> {{ itemInfo.itemdesc6 }}
+                </div>
+            </div>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="UDF Strings">
+        <ng-template ngbPanelContent>
+            <div class="row">
+                <div class="col-6">
+                    <b>UDF STRING 1</b> {{ itemInfo.udfstring01 }}
+                </div>
+                <div class="col-6">
+                    <b>UDF STRING 2</b> {{ itemInfo.udfstring02 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <b>UDF STRING 3</b> {{ itemInfo.udfstring03 }}
+                </div>
+                <div class="col-6">
+                    <b>UDF STRING 4</b> {{ itemInfo.udfstring04 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <b>UDF STRING 5</b> {{ itemInfo.udfstring05 }}
+                </div>
+                <div class="col-6">
+                    <b>UDF STRING 6</b> {{ itemInfo.udfstring06 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <b>UDF STRING 7</b> {{ itemInfo.udfstring07 }}
+                </div>
+                <div class="col-6">
+                    <b>UDF STRING 8</b> {{ itemInfo.udfstring08 }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <b>UDF STRING 9</b> {{ itemInfo.udfstring09 }}
+                </div>
+                <div class="col-6">
+                    <b>UDF STRING 10</b> {{ itemInfo.udfstring10 }}
+                </div>
+            </div>
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Extras">
+        <ng-template ngbPanelContent>
+            <div class="row">
+                <div class="col-4">
+                    <b>HSN Code </b> {{ itemInfo.hsn_SAC_CODE }}
+                </div>
+                <div class="col-4">
+                    <b>MRP</b> {{ itemInfo.listed_MRP }}
+                </div>
+                <div class="col-4">
+                    <b>RSP</b> {{ itemInfo.mrp }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                    <b>CARE_INSTRUCTION</b> {{ itemInfo.care_INSTRUCTION }}
+                </div>
+                <div class="col-4">
+                    <b>BRAND_FLAG</b> {{ itemInfo.brand_FLAG }}
+                </div>
+                <div class="col-4">
+                    <b>M1VALUE</b> {{ itemInfo.m1VALUE }}
+                </div>
+            </div>
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>

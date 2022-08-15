@@ -1,6 +1,8 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from '../../auth/services/session/session.service';
+import { ItemInfoServiceService } from '../common/modal/item-info/item-info-service.service';
 import { BarcodeModel } from '../models/promo-signage/Barcode-model';
 import { BarcodeSaveResponse } from '../models/promo-signage/login-response';
 import { NavbarService } from '../services/navbar/navbar.service';
@@ -36,7 +38,10 @@ export class PromoSignageComponent implements OnInit {
     private router: Router,
     private navbarService: NavbarService,
     public toastService: ToastService,
-    private sessionService: SessionService) { }
+    private sessionService: SessionService, config: NgbModalConfig, private modalService: NgbModal, private itemInfoService: ItemInfoServiceService) {
+    config.backdrop = 'static';
+    config.keyboard = true;
+  }
 
   ngOnInit(): void {
     this.barcodeModelList.push(new BarcodeModel())
@@ -117,5 +122,11 @@ export class PromoSignageComponent implements OnInit {
 
   ngOnDestroy(): void {
     this.toastService.clear();
+  }
+  open(content: any, index: any) {
+    console.log(this.barcodeModelList[index].barcode);
+    this.itemInfoService.setValue(this.barcodeModelList[index].barcode)
+    this.modalService.open(content, { size: 'xl', centered: true, scrollable: true });
+
   }
 }

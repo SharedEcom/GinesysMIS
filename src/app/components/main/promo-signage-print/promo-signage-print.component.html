@@ -3,7 +3,8 @@
         <div class="col-4 dashed-border custom-height custom-width pt-2 ps-6"
             *ngFor="let promoSignage of promoSignagePrintResponse.result; let i=index;">
             <div class="custom-column">
-                <div class="row data-row" style="height: 50px;">
+                <div class="row data-row p-6 min-vw-100"> 
+                <!-- style ="height: 50px;" -->
                     <div class="col-10 mb-0 me-2 min-vw-100">
                         <p class="article-name"> {{ promoSignage.articleName }}</p>
                     </div>

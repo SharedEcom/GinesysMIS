@@ -65,7 +65,23 @@
                                 (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
                         </div>
                         <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <button class="btn btn-success">Info</button>
+                            <button class="btn btn-success" (click)="open(content, i)">Info</button>
+                        </div>
+                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                            <ng-template #content let-c="close" let-d="dismiss">
+                                <div class="modal-header">
+                                  <h4 class="modal-title" id="modal-basic-title"> Selected Barcode # {{ barcodeModel.barcode }}</h4>
+                                  <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <!-- <p>Hello, World!</p> -->
+                                  <app-item-info></app-item-info>
+                                </div>
+                                <div class="modal-footer text-danger" >
+                                    <h6 class="modal-title" id="modal-basic-title"> <b>* Item Information diplayed on this page could be alter as required by MDM </b></h6>
+                                    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+                                </div>
+                              </ng-template>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
-import { CommonResponse } from '../../../statics/models/common-response'
+import { CommonResponse } from '../../../../../statics/models/common-response'
 
-export class PromoSignageResponse {
+export class ItemInfoResponse {
     serviceMessage: CommonResponse
     result: any[]
 

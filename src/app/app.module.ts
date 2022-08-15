@@ -15,6 +15,7 @@ import { PromoSignagePrintComponent } from './components/main/promo-signage-prin
 import { CommingSoonComponent } from './components/statics/comming-soon/comming-soon.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/statics/toast/toast.component';
+import { ItemInfoComponent } from './components/main/common/modal/item-info/item-info/item-info.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ToastComponent } from './components/statics/toast/toast.component';
     ExtraUdfComponent,
     PromoSignagePrintComponent,
     CommingSoonComponent,
-    ToastComponent
+    ToastComponent,
+    ItemInfoComponent
   ],
   imports: [
     BrowserModule,
