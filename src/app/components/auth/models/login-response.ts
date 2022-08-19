@@ -8,7 +8,16 @@ export class LoginResponse {
         this.serviceMessage = new CommonResponse()
         this.result = {
             'authToken': '',
-            'expiryDate': ''
+            'expiryDate': '',
+            userDetails: {
+                'firstName': '',
+                'abbreviation': '',
+                'password': null,
+                'shortName': '',
+                'siteCode': '',
+                'siteName': '',
+                'ecode': 0
+            }
         }
     }
 }

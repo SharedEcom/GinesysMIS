@@ -41,20 +41,20 @@
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text" id="addon-wrapping">@</span>
                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                        aria-describedby="addon-wrapping" [(ngModel)]="username">
+                                        aria-describedby="addon-wrapping" [(ngModel)]="username" (keyup.enter)="login(username, password)">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text px-3" id="addon-wrapping"><b>*</b></span>
                                     <input type="password" class="form-control" placeholder="Password"
-                                        aria-label="Password" aria-describedby="addon-wrapping" [(ngModel)]="password">
+                                        aria-label="Password" aria-describedby="addon-wrapping" [(ngModel)]="password" (keyup.enter)="login(username, password)">
                                 </div>
                             </div>
                             <div class="row py-3">
                                 <div class="d-grid gap-2">
                                     <a class="btn btn-success" type="button" (click)="login(username, password)"
-                                        routerLinkActive="active">Sign-In</a>
+                                        routerLinkActive="active" (keyup.enter)="login(username, password)">Sign-In</a>
                                 </div>
                             </div>
                         </div>

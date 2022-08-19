@@ -124,7 +124,6 @@ export class PromoSignageComponent implements OnInit {
     this.toastService.clear();
   }
   open(content: any, index: any) {
-    console.log(this.barcodeModelList[index].barcode);
     this.itemInfoService.setValue(this.barcodeModelList[index].barcode)
     this.modalService.open(content, { size: 'xl', centered: true, scrollable: true });
 

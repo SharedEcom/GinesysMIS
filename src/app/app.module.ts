@@ -16,6 +16,7 @@ import { CommingSoonComponent } from './components/statics/comming-soon/comming-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastComponent } from './components/statics/toast/toast.component';
 import { ItemInfoComponent } from './components/main/common/modal/item-info/item-info/item-info.component';
+import { SiteListComponent } from './components/main/common/modal/site-list/site-list.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ItemInfoComponent } from './components/main/common/modal/item-info/item
     PromoSignagePrintComponent,
     CommingSoonComponent,
     ToastComponent,
-    ItemInfoComponent
+    ItemInfoComponent,
+    SiteListComponent
   ],
   imports: [
     BrowserModule,
