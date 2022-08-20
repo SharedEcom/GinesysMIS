@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavbarService } from '../../main/services/navbar/navbar.service';
+import { NavbarService } from '../../../services/common/navbar/navbar.service';
 
 @Component({
   selector: 'app-comming-soon',

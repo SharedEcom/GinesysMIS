@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SiteListResponse } from './model/site-info-response';
-import { SiteListService } from './service/site-list.service';
+import { SiteListResponse } from 'src/app/models/common/modal/site-list/site-info-response';
+import { SiteListService } from 'src/app/services/common/modal/site-list/site-list.service';
 
 @Component({
   selector: 'app-site-list',

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { CommonResponse } from '../../statics/models/common-response';
-import { PromoSignageResponse } from '../models/promo-signage-print/promo-signage-print-response';
-import { PromoSignagePrintService } from '../services/promo-signage-print/promo-signage-print.service';
+import { PromoSignageResponse } from 'src/app/models/screens/promo-signage-print/promo-signage-print-response';
+import { PromoSignagePrintService } from '../../../services/screen/promo-signage-print/promo-signage-print.service';
 
 @Component({
   selector: 'app-promo-signage-print',

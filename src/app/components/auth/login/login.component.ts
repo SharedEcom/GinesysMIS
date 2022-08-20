@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { NavbarService } from '../../main/services/navbar/navbar.service';
-import { LoginRequest } from '../models/login-request';
-import { LoginResponse } from '../models/login-response';
-import { LoginServiceService } from '../services/login/login-service.service';
+import { NavbarService } from '../../../services/common/navbar/navbar.service';
+import { LoginRequest } from '../../../models/auth/login-request';
+import { LoginResponse } from '../../../models/auth/login-response';
+import { LoginServiceService } from '../../../services/auth/login/login-service.service';
 
 @Component({
   selector: 'app-login',

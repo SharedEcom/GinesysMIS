@@ -9,14 +9,15 @@ import { HeaderComponent } from './components/statics/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/main/home/home.component';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
-import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
+// import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
 import { ExtraUdfComponent } from './components/main/extra-udf/extra-udf.component';
 import { PromoSignagePrintComponent } from './components/main/promo-signage-print/promo-signage-print.component';
 import { CommingSoonComponent } from './components/statics/comming-soon/comming-soon.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ToastComponent } from './components/statics/toast/toast.component';
-import { ItemInfoComponent } from './components/main/common/modal/item-info/item-info/item-info.component';
+import { ToastComponent } from './components/main/common/toast/toast.component';
+import { ItemInfoComponent } from './components/main/common/modal/item-info/item-info.component';
 import { SiteListComponent } from './components/main/common/modal/site-list/site-list.component';
+import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
 
 @NgModule({
   declarations: [

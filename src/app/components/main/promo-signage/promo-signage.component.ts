@@ -1,13 +1,13 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
-import { SessionService } from '../../auth/services/session/session.service';
-import { ItemInfoServiceService } from '../common/modal/item-info/item-info-service.service';
-import { BarcodeModel } from '../models/promo-signage/Barcode-model';
-import { BarcodeSaveResponse } from '../models/promo-signage/login-response';
-import { NavbarService } from '../services/navbar/navbar.service';
-import { PromoSignageService } from '../services/promo-signage/promo-signage.service';
-import { ToastService } from '../services/toast/toast.service';
+import { SessionService } from '../../../services/auth/session/session.service';
+import { BarcodeModel } from '../../../models/screens/promo-signage/Barcode-model';
+import { BarcodeSaveResponse } from '../../../models/screens/promo-signage/login-response';
+import { NavbarService } from '../../../services/common/navbar/navbar.service';
+import { PromoSignageService } from '../../../services/screen/promo-signage/promo-signage.service';
+import { ToastService } from '../../../services/common/toast/toast.service';
+import { ItemInfoServiceService } from 'src/app/services/common/modal/item-info/item-info-service.service';
 
 @Component({
   selector: 'app-promo-signage',
