@@ -14,7 +14,14 @@ export class ItemInfoComponent implements OnInit {
   constructor(private itemInfoService: ItemInfoServiceService) { }
 
   ngOnInit(): void {
-    let response = this.itemInfoService.getBarcodeDetailById()
+ var siteCode
+    var tempUserObject = localStorage.getItem('userDetails')
+    if (tempUserObject !== null) {
+      var userObject = JSON.parse(tempUserObject)
+      siteCode = userObject.siteCode
+    }
+
+      let response = this.itemInfoService.getBarcodeDetailById(siteCode)
     response.subscribe((data: ItemInfoResponse) => {
       if (data.serviceMessage.code == 200) {
         this.itemInfo = data.result

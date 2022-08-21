@@ -58,10 +58,11 @@
                                     signageType.text }}</option>
                             </select>
                         </div>
-                        <div *ngIf="i==0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
-                        </div>
-                        <div *ngIf="i!=0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <!-- <div *ngIf="barcodeModelList.length > 0 && i===0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                            <button class="btn btn-danger"
+                                (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
+                        </div> -->
+                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                             <button class="btn btn-danger"
                                 (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
                         </div>
@@ -104,7 +105,9 @@
                         &nbsp;
                     </div>
                     <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
-                        &nbsp;
+                        <!-- <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify"> -->
+                            <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
+                        <!-- </div> -->
                     </div>
                     <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                         <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>

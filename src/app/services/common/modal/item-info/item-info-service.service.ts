@@ -23,8 +23,8 @@ export class ItemInfoServiceService {
     return this.ITEM_CODE
   }
 
-  public getBarcodeDetailById(): Observable<ItemInfoResponse> {
-    const httpHeaders = new HttpHeaders().set("Authorization", this.BEARER + localStorage.getItem('authToken')).set("barcode", this.ITEM_CODE)
+  public getBarcodeDetailById(siteCode: any): Observable<ItemInfoResponse> {
+    const httpHeaders = new HttpHeaders().set("Authorization", this.BEARER + localStorage.getItem('authToken')).set("barcode", this.ITEM_CODE).set('siteCode', siteCode)
     return this.httpClient.get<ItemInfoResponse>(this.BASE_URL + this.VIEW_BARCODE, { headers: httpHeaders })
   }
 }

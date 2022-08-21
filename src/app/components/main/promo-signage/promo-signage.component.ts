@@ -79,6 +79,20 @@ export class PromoSignageComponent implements OnInit {
       "modelRequest": barcodeList
     }
 
+    var modelRequestArray = request.modelRequest
+
+    for (let index = 0; index < modelRequestArray.length; index++) {
+      const element = modelRequestArray[index];
+      
+      var tempUserObject = localStorage.getItem('userDetails')
+      if (tempUserObject !== null) {
+        var userObject = JSON.parse(tempUserObject)
+
+        element.siteCode = userObject.siteCode
+      }
+      
+    }
+
     let response = this.promoSignageService.saveBarcode(request)
     response.subscribe((data: BarcodeSaveResponse) => {
       this.barcodeSaveResponse = data

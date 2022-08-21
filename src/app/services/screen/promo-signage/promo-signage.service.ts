@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { BarcodeSaveResponse } from 'src/app/models/screens/promo-signage/login-response';
+import { BarcodeSaveResponse } from '../../../models/screens/promo-signage/login-response';
 
 @Injectable({
   providedIn: 'root'
