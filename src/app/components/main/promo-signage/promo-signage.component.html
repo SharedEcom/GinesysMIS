@@ -29,10 +29,14 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="container my-4 mx-5">
+            <div class="my-4 mx-5">
                 <div *ngIf="barcodeModelList">
                     <div *ngFor="let barcodeModel of barcodeModelList; let i = index"
                         class="row g-2 d-flex justify-content-center align-items-justify">
+
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            &nbsp;
+                        </div>
                         <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
                             <label for="barcode" class="form-label">Enter Barcode</label>
                         </div>
@@ -43,33 +47,44 @@
                             <!--                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
                                 [(ngModel)]="barcodeModel.barcode"> -->
                         </div>
-                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <label for="quantity" class="form-label">Print Quantity</label>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-right">
+                            <label for="quantity" class="form-label"> Print Quantity</label>
                         </div>
-                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                        <div class="col-lg-1 mb-4 d-flex content-right align-items-right">
                             <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3"
                                 [(ngModel)]="barcodeModel.printQuantity">
                         </div>
                         <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
                             <select class="form-select" aria-label="Sinage Type"
-                                (change)="assignSignage(barcodeModel, $event)">
+                                (change)="assignSignage(barcodeModel, $event)" (focusout)="getBarcodeDetails(i)">
                                 <option selected disabled>Sinage Type</option>
                                 <option *ngFor="let signageType of signageTypeList; let j = index" value="{{j}}">{{
                                     signageType.text }}</option>
                             </select>
                         </div>
+                        <!-- <div *ngIf (change)="assignSignage(barcodeModel, $event)"  -->
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            <!--<input type="Inputtext" class="form-control" id="formInput" placeholder="Value" min="1" max="5"> -->
+                            <input type="number" class="form-control" id="Inputvalue" placeholder="0" maxlength="5"
+                                (change)="validateMrp(barcodeModel.inputQty, i)"
+                                [disabled]="barcodeModel.signageTypeCode==5" [(ngModel)]="barcodeModel.inputQty">
+                        </div>
+                        <!--                   <div>  -->
                         <!-- <div *ngIf="barcodeModelList.length > 0 && i===0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                             <button class="btn btn-danger"
                                 (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
                         </div> -->
-                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
                             <button class="btn btn-danger"
                                 (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
                         </div>
-                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
                             <button class="btn btn-success" (click)="open(content, i)">Info</button>
                         </div>
-                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm mb-4 d-flex justify-content-center align-items-justify">
                             <ng-template #content let-c="close" let-d="dismiss">
                                 <div class="modal-header">
                                     <h4 class="modal-title" id="modal-basic-title"> Selected Barcode # {{
@@ -106,7 +121,7 @@
                     </div>
                     <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
                         <!-- <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify"> -->
-                            <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
+                        <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
                         <!-- </div> -->
                     </div>
                     <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">

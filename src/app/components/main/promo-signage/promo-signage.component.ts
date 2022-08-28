@@ -7,7 +7,8 @@ import { BarcodeSaveResponse } from '../../../models/screens/promo-signage/login
 import { NavbarService } from '../../../services/common/navbar/navbar.service';
 import { PromoSignageService } from '../../../services/screen/promo-signage/promo-signage.service';
 import { ToastService } from '../../../services/common/toast/toast.service';
-import { ItemInfoServiceService } from 'src/app/services/common/modal/item-info/item-info-service.service';
+import { ItemInfoServiceService } from '../../../services/common/modal/item-info/item-info-service.service';
+import { ItemInfoResponse } from '../../../models/common/modal/item-info/item-info-response';
 
 @Component({
   selector: 'app-promo-signage',
@@ -23,15 +24,22 @@ export class PromoSignageComponent implements OnInit {
 
   barcodeSaveResponse = new BarcodeSaveResponse()
 
+  itemInfo: any
+
+  maxMrp: number = 0
+  minMrp: number = 0
+
+  mrp: any
+
   signageTypeList = [
-    { id: 1, text: "SAVE Format" },
-    { id: 2, text: "BUY 1 GET 1 FREE" },
-    { id: 3, text: "BUY 2 GET 1 FREE" },
-    { id: 4, text: "% Off Format" },
+    { id: 1, text: "SAVE Rs." },
+    { id: 2, text: " Off %" },
+    { id: 3, text: "BUY 1 GET FREE" },
+    { id: 4, text: "BUY 2 GET FREE" },
     { id: 5, text: "Power Pricing" },
-    { id: 6, text: "Selling Price Format" },
-    { id: 7, text: "On Pack Promo Offer" },
-    { id: 8, text: "Selling Price Format" },
+    //   { id: 6, text: "Selling Price Format" },
+    //   { id: 7, text: "On Pack Promo Offer" },
+    //   { id: 8, text: "Selling Price Format" },
   ]
 
   constructor(private promoSignageService: PromoSignageService,
@@ -83,14 +91,14 @@ export class PromoSignageComponent implements OnInit {
 
     for (let index = 0; index < modelRequestArray.length; index++) {
       const element = modelRequestArray[index];
-      
+
       var tempUserObject = localStorage.getItem('userDetails')
       if (tempUserObject !== null) {
         var userObject = JSON.parse(tempUserObject)
 
         element.siteCode = userObject.siteCode
       }
-      
+
     }
 
     let response = this.promoSignageService.saveBarcode(request)
@@ -141,5 +149,65 @@ export class PromoSignageComponent implements OnInit {
     this.itemInfoService.setValue(this.barcodeModelList[index].barcode)
     this.modalService.open(content, { size: 'xl', centered: true, scrollable: true });
 
+  }
+
+  getBarcodeDetails(index: any) {
+    this.itemInfoService.setValue(this.barcodeModelList[index].barcode)
+    var siteCode
+    var tempUserObject = localStorage.getItem('userDetails')
+    if (tempUserObject !== null) {
+      var userObject = JSON.parse(tempUserObject)
+      siteCode = userObject.siteCode
+    }
+
+    let response = this.itemInfoService.getBarcodeDetailById(siteCode)
+    response.subscribe((data: any) => {
+      if (data.serviceMessage.code == 200) {
+        this.itemInfo = data.result
+        // this.setMrpRange(this.itemInfo, this.barcodeModelList[index])
+
+        if (this.barcodeModelList[index].signageTypeCode === 1) {
+          this.maxMrp = data.result.mrp;
+        }
+
+        if (this.barcodeModelList[index].signageTypeCode === 2) {
+          this.maxMrp = 100;
+        }
+
+        if (this.barcodeModelList[index].signageTypeCode === 3 || this.barcodeModelList[index].signageTypeCode === 4) {
+          this.maxMrp = 10;
+        }
+
+        if (this.barcodeModelList[index].signageTypeCode === 5) {
+          this.maxMrp = 0;
+        }
+        console.log('Data saved successfully')
+
+        console.log('maxMrp:', this.maxMrp);
+        console.log('minMrp:', this.minMrp);
+        // this.showSuccess()
+        // this.showCustomSuccess(data.serviceMessage.type, data.serviceMessage.message, 10000);
+        // this.toastr.showSuccess(data.serviceMessage.message, data.serviceMessage.type)
+      } else {
+        console.log('Data not received');
+
+        // this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
+        // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
+      }
+    });
+  }
+
+  validateMrp(input: any, index: number) {
+    let value = input;
+    if (value) {
+      if (value < this.minMrp) value = this.minMrp;
+      if (value > this.maxMrp) value = this.maxMrp;
+      this.barcodeModelList[index].inputQty = value;
+      // if (input.value != value) {
+      //   const start = input.selectionStart ? input.selectionStart - 1 : -1;
+      //   input.value = value;
+      //   if (start > 0) input.selectionStart = input.selectionEnd = start;
+      // }
+    }
   }
 }

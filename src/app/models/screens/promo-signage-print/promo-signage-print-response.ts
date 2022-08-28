@@ -12,6 +12,7 @@ export class PromoSignageResponse {
                 barcodeType: '',
                 articleName: '',
                 mrp: 0.0,
+                listedMrp: 0.0,
                 bannerName: '',
                 quantity: 0
             }

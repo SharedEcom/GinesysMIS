@@ -1,7 +1,8 @@
 <div class="d-flex justify-content-evenly align-self-center mt-4 ms-3">
     <div class="row" style="position: relative; display: inline-block;">
         <div class="col-4 dashed-border custom-height custom-width pt-2 ps-6" id="boxes"
-            *ngFor="let promoSignage of promoSignagePrintResponse.result; let i=index;" style="position: relative; display: inline-block;">
+            *ngFor="let promoSignage of promoSignagePrintResponse.result; let i=index;"
+            style="position: relative; display: inline-block;">
             <div class="custom-column">
                 <div class="row data-row p-6 min-vw-100">
                     <!-- style ="height: 50px;" -->
@@ -10,7 +11,7 @@
                     </div>
                 </div>
                 <div class="row data-row pb-0 mb-0"
-                    *ngIf="(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
+                    *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
                     <div class="col-10" style="width: 100%;">
                         <div class="row">
                             <!-- <div class="d-flex justify-content-center"> -->
@@ -28,7 +29,7 @@
                     </div>
                 </div>
                 <div class="row data-row pb-0 mb-0"
-                    *ngIf="!(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)">
+                    *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
                     <div class="col-10" style="width: 100%;">
                         <div class="row">
                             <!-- <p class="banner-name mb-0"><strong>{{ promoSignage.bannerName }}</strong></p> -->
@@ -40,12 +41,18 @@
                     </div>
                 </div>
                 <div class="row data-row">
-                    <div class="p-6 col-6 d-flex justify-content-start">
-                        <p class="mrp-name pe-0 me-0">MRP: <del>&#x20b9; {{ promoSignage.mrp }}</del>
+                    <div class="p-6 col-5 d-flex justify-content-start"
+                        *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
+                        <p class="mrp-name pe-0 me-0">MRP: <del>&#x20b9; {{ promoSignage.listedMrp }}</del>
                         </p>
                     </div>
-                    <div *ngIf="!(promoSignage.barcodeType==2 || promoSignage.barcodeType==3)"
-                        class="p-6 col-6 d-flex justify-content-end">
+                    <div class="p-6 col-5 d-flex justify-content-start"
+                        *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
+                        <p class="mrp-name pe-0 me-0">MRP: &#x20b9; {{ promoSignage.listedMrp }}
+                        </p>
+                    </div>
+                    <div *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)"
+                        class="p-6 col-7 d-flex justify-content-end">
                         <p class="mrp-name pe-0 me-0">OUR PRICE
                             <strong>&#x20b9; {{ promoSignage.mrp }}</strong>
                         </p>

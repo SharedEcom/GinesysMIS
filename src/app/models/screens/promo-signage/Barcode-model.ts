@@ -4,6 +4,7 @@ export class BarcodeModel {
     signageTypeCode: number
     signageTypeName: String
     siteCode: number
+    inputQty: number
 
     constructor() {
         this.barcode = ''
@@ -11,5 +12,6 @@ export class BarcodeModel {
         this.signageTypeCode = 0
         this.signageTypeName = ''
         this.siteCode = 0
+        this.inputQty = 0
     }
 }
