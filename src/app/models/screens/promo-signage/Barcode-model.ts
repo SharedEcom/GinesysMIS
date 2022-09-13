@@ -12,6 +12,6 @@ export class BarcodeModel {
         this.signageTypeCode = 0
         this.signageTypeName = ''
         this.siteCode = 0
-        this.inputQty = 0
+        this.inputQty = 0.00
     }
 }

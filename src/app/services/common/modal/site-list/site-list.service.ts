@@ -8,7 +8,8 @@ import { SiteListResponse } from 'src/app/models/common/modal/site-list/site-inf
 })
 export class SiteListService {
 
-  BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
+//  BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
+  BASE_URL: string = "https://signageauth.vmart.co.in/v1/promo-signage/" 
   VIEW_BARCODE: String = "site/"
   BEARER = 'Bearer '
 

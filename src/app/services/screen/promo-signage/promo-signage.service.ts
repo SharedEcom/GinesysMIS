@@ -8,8 +8,9 @@ import { BarcodeSaveResponse } from '../../../models/screens/promo-signage/login
 })
 export class PromoSignageService {
 
-  BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
-  SAVE_BARCODE: String = "barcode/save"
+//  BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
+BASE_URL: string = "https://signageauth.vmart.co.in/v1/promo-signage/" 
+SAVE_BARCODE: String = "barcode/save"
   BEARER = 'Bearer '
 
   constructor(private httpClient: HttpClient) { }

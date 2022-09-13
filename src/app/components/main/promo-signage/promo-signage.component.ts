@@ -36,7 +36,7 @@ export class PromoSignageComponent implements OnInit {
     { id: 2, text: " Off %" },
     { id: 3, text: "BUY 1 GET FREE" },
     { id: 4, text: "BUY 2 GET FREE" },
-    { id: 5, text: "Power Pricing" },
+    { id: 5, text: "ON MRP" },
     //   { id: 6, text: "Selling Price Format" },
     //   { id: 7, text: "On Pack Promo Offer" },
     //   { id: 8, text: "Selling Price Format" },

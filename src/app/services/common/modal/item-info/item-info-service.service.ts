@@ -8,8 +8,9 @@ import { ItemInfoResponse } from 'src/app/models/common/modal/item-info/item-inf
 })
 export class ItemInfoServiceService {
 
-  BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
-  VIEW_BARCODE: String = "barcode/"
+//     BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
+BASE_URL: string = "https://signageauth.vmart.co.in/v1/promo-signage/" 
+VIEW_BARCODE: String = "barcode/"
   BEARER = 'Bearer '
   ITEM_CODE: string = ''
 

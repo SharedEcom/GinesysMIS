@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="row data-row pb-0 mb-0"
-                    *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
+                    *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4) ">
                     <div class="col-10" style="width: 100%;">
                         <div class="row">
                             <!-- <div class="d-flex justify-content-center"> -->
@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="row data-row pb-0 mb-0"
-                    *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
+                    *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)  || promoSignage.barcodeType==5">
                     <div class="col-10" style="width: 100%;">
                         <div class="row">
                             <!-- <p class="banner-name mb-0"><strong>{{ promoSignage.bannerName }}</strong></p> -->
@@ -42,18 +42,18 @@
                 </div>
                 <div class="row data-row">
                     <div class="p-6 col-5 d-flex justify-content-start"
-                        *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
-                        <p class="mrp-name pe-0 me-0">MRP: <del>&#x20b9; {{ promoSignage.listedMrp }}</del>
+                        *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4 || promoSignage.barcodeType==5)">
+                        <p class="mrp-name pe-0 me-0">MRP <del>&#x20b9; {{ promoSignage.listedMrp }}</del>
                         </p>
                     </div>
                     <div class="p-6 col-5 d-flex justify-content-start"
-                        *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)">
-                        <p class="mrp-name pe-0 me-0">MRP: &#x20b9; {{ promoSignage.listedMrp }}
+                        *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4 || promoSignage.barcodeType==5)">
+                        <p class="mrp-name pe-0 me-0">MRP &#x20b9; {{ promoSignage.listedMrp }}
                         </p>
                     </div>
-                    <div *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4)"
+                    <div *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4 || promoSignage.barcodeType==5)"
                         class="p-6 col-7 d-flex justify-content-end">
-                        <p class="mrp-name pe-0 me-0">OUR PRICE
+                        <p class="mrp-name pe-0 me-0">VMART PRICE
                             <strong>&#x20b9; {{ promoSignage.mrp }}</strong>
                         </p>
                     </div>
