@@ -1,10 +1,21 @@
-<div class="mt-5">
-    <ngb-toast *ngFor="let toast of toastService.toasts" [class]="toast.classname" [autohide]="true"
-        [delay]="toast.delay || 5000" (hidden)="toastService.remove(toast)" [header]="toast.header">
-        <ng-template [ngIf]="isTemplate(toast)" [ngIfElse]="text">
-            <ng-template [ngTemplateOutlet]="toast.textOrTpl"></ng-template>
-        </ng-template>
+<div class="border border-secondary rounded">
+    <div (mouseenter)="stopCountDown()" (mouseleave)="countDown()" class="col toast_wrapper"
+        [@openClose]="toastService.data && toastService.data.show ? 'open' : 'closed'">
+        <div class="inner_wrapper">
+            <div class="flex" *ngIf="toastService.data">
+                <div class="toast_content">
+                    <h5 class="toast_title">
+                        {{ toastService.data.title }}
+                    </h5>
+                    <hr>
+                    <div class="toast_text">
+                        {{ toastService.data.content }}
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <ng-template #text>{{ toast.textOrTpl }}</ng-template>
-    </ngb-toast>
+        <div class="progress_bar" [ngClass]="{ success: toastService.data && toastService.data.type === 1 }" #element>
+        </div>
+    </div>
 </div>

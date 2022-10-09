@@ -1,1 +1,15 @@
-<router-outlet></router-outlet>
+<div class="toast-overlay">
+    <app-toast></app-toast>
+</div>
+<div class="content">
+    <router-outlet></router-outlet>
+</div>
+<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="medium" color="#4dd358" type="square-jelly-box" [fullScreen]="true"
+    [disableAnimation]="false">
+    <div class="d-flex justify-content-center">
+        <!-- <div class="spinner-grow text-success" role="status" style="zoom: 2.0;"> -->
+            <!-- <span class="visually-hidden">Loading...</span> -->
+        <!-- </div> -->
+    </div>
+    <p style="color: white"> Loading... </p>
+</ngx-spinner>

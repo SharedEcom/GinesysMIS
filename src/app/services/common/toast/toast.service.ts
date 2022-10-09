@@ -1,24 +1,29 @@
 import { Injectable, TemplateRef } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ToastInfo } from 'src/app/models/toast/toast-info';
+import { ToastTypes } from 'src/app/models/toast/toast-types';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService {
 
-  toasts: ToastInfo[] = []
+  data!: ToastInfo;
+  public open = new Subject<ToastInfo>();
 
   constructor() { }
 
-  show(textOrTpl: string | TemplateRef<any>, options: any = {}) {
-    this.toasts.push({ textOrTpl, ...options });
+  initiate(data: ToastInfo) {
+    if (data.type) {
+      // this.data.type = ToastTypes.error;
+      console.log(ToastTypes[data.type])
+    }
+    this.data = { ...data, show: true, progressWidth: '100%' };
+    this.open.next(this.data);
   }
 
-  remove(toast: ToastInfo) {
-    this.toasts = this.toasts.filter(t => t != toast);
-  }
-
-  clear() {
-    this.toasts.splice(0, this.toasts.length);
+  hide() {
+    this.data = { ...this.data, show: false };
+    this.open.next(this.data);
   }
 }

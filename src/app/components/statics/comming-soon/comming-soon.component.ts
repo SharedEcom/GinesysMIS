@@ -14,7 +14,7 @@ export class CommingSoonComponent implements OnInit {
   constructor(private router: Router, private navbarService: NavbarService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('authToken') === null) {
+    if (sessionStorage.getItem('authToken') === null) {
       this.router.navigateByUrl("/")
     } else {
       this.isNavbarVisible = this.navbarService.isNavbarVisible

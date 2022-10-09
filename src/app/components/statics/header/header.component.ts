@@ -18,11 +18,11 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if (localStorage.getItem('authToken') === null && localStorage.getItem('userDetails') === null) {
+    if (sessionStorage.getItem('authToken') === null && sessionStorage.getItem('userDetails') === null) {
       this.isAuthToken = false
     } else {
       this.isAuthToken = true
-      var tempUserObject = localStorage.getItem('userDetails')
+      var tempUserObject = sessionStorage.getItem('userDetails')
       if (tempUserObject !== null) {
         this.userObject = JSON.parse(tempUserObject)
       }
@@ -31,11 +31,11 @@ export class HeaderComponent implements OnInit {
   }
 
   logoutUser() {
-    if (localStorage.getItem('authToken') !== null && localStorage.getItem('userDetails') !== null) { 
-      localStorage.removeItem('authToken') 
-      localStorage.removeItem('userDetails') 
+    if (sessionStorage.getItem('authToken') !== null && sessionStorage.getItem('userDetails') !== null) { 
+      sessionStorage.removeItem('authToken') 
+      sessionStorage.removeItem('userDetails') 
       this.router.navigateByUrl('/')
-      // localStorage.clear()
+      // sessionStorage.clear()
     } else {
       this.router.navigateByUrl('/')
     }

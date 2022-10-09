@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,7 +11,6 @@ import { HeaderComponent } from './components/statics/header/header.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HomeComponent } from './components/main/home/home.component';
 import { BackButtonDisableModule } from 'angular-disable-browser-back-button';
-// import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
 import { ExtraUdfComponent } from './components/main/extra-udf/extra-udf.component';
 import { PromoSignagePrintComponent } from './components/main/promo-signage-print/promo-signage-print.component';
 import { CommingSoonComponent } from './components/statics/comming-soon/comming-soon.component';
@@ -31,7 +32,7 @@ import { PromoSignageComponent } from './components/main/promo-signage/promo-sig
     CommingSoonComponent,
     ToastComponent,
     ItemInfoComponent,
-    SiteListComponent
+    SiteListComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,9 @@ import { PromoSignageComponent } from './components/main/promo-signage/promo-sig
     }),
     HttpClientModule,
     FormsModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' })
   ],
   providers: [],
   bootstrap: [AppComponent]

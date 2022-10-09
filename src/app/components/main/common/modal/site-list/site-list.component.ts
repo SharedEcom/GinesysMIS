@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { SiteListResponse } from 'src/app/models/common/modal/site-list/site-info-response';
 import { SiteListService } from 'src/app/services/common/modal/site-list/site-list.service';
 
@@ -11,13 +12,14 @@ export class SiteListComponent implements OnInit {
 
   siteList: any
 
-  constructor(private siteListService: SiteListService) { }
+  constructor(private siteListService: SiteListService, private spinner: NgxSpinnerService) { }
 
   ngOnInit(): void {
 
+    this.spinner.show()
     var userObject
 
-    var tempUserObject = localStorage.getItem('userDetails')
+    var tempUserObject = sessionStorage.getItem('userDetails')
     if (tempUserObject !== null) {
       userObject = JSON.parse(tempUserObject)
 
@@ -34,6 +36,7 @@ export class SiteListComponent implements OnInit {
           // this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
           // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
         }
+        this.spinner.hide()
       });
     }
   }
@@ -42,14 +45,14 @@ export class SiteListComponent implements OnInit {
 
     var userObject
 
-    var tempUserObject = localStorage.getItem('userDetails')
+    var tempUserObject = sessionStorage.getItem('userDetails')
     if (tempUserObject !== null) {
       userObject = JSON.parse(tempUserObject)
       userObject.siteCode = site.siteCode
       userObject.shortName = site.shortName
       userObject.siteName = site.siteName
-      localStorage.setItem('userDetails', JSON.stringify(userObject))
-      console.log((localStorage.getItem('userDetails')));
+      sessionStorage.setItem('userDetails', JSON.stringify(userObject))
+      console.log((sessionStorage.getItem('userDetails')));
       
     }
   }

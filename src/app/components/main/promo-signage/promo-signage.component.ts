@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { SessionService } from '../../../services/auth/session/session.service';
@@ -8,7 +8,8 @@ import { NavbarService } from '../../../services/common/navbar/navbar.service';
 import { PromoSignageService } from '../../../services/screen/promo-signage/promo-signage.service';
 import { ToastService } from '../../../services/common/toast/toast.service';
 import { ItemInfoServiceService } from '../../../services/common/modal/item-info/item-info-service.service';
-import { ItemInfoResponse } from '../../../models/common/modal/item-info/item-info-response';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { ToastTypes } from 'src/app/models/toast/toast-types';
 
 @Component({
   selector: 'app-promo-signage',
@@ -45,8 +46,12 @@ export class PromoSignageComponent implements OnInit {
   constructor(private promoSignageService: PromoSignageService,
     private router: Router,
     private navbarService: NavbarService,
-    public toastService: ToastService,
-    private sessionService: SessionService, config: NgbModalConfig, private modalService: NgbModal, private itemInfoService: ItemInfoServiceService) {
+    private sessionService: SessionService, 
+    config: NgbModalConfig, 
+    private modalService: NgbModal, 
+    private itemInfoService: ItemInfoServiceService, 
+    private spinner: NgxSpinnerService,
+    private toast: ToastService) {
     config.backdrop = 'static';
     config.keyboard = true;
   }
@@ -54,10 +59,10 @@ export class PromoSignageComponent implements OnInit {
   ngOnInit(): void {
     this.barcodeModelList.push(new BarcodeModel())
 
-    if (localStorage.getItem('authToken') === null) {
+    if (sessionStorage.getItem('authToken') === null) {
       this.router.navigateByUrl("/")
     } else {
-      if (!this.sessionService.tokenExpired(localStorage.getItem('authToken') || '')) {
+      if (!this.sessionService.tokenExpired(sessionStorage.getItem('authToken') || '')) {
         this.navbarService.isNavbarVisible = true
         this.isNavbarVisible = this.navbarService.isNavbarVisible
       } else {
@@ -83,6 +88,9 @@ export class PromoSignageComponent implements OnInit {
   }
 
   saveBarcode(barcodeList: Array<BarcodeModel>) {
+
+    this.spinner.show()
+
     const request: any = {
       "modelRequest": barcodeList
     }
@@ -92,7 +100,7 @@ export class PromoSignageComponent implements OnInit {
     for (let index = 0; index < modelRequestArray.length; index++) {
       const element = modelRequestArray[index];
 
-      var tempUserObject = localStorage.getItem('userDetails')
+      var tempUserObject = sessionStorage.getItem('userDetails')
       if (tempUserObject !== null) {
         var userObject = JSON.parse(tempUserObject)
 
@@ -106,13 +114,27 @@ export class PromoSignageComponent implements OnInit {
       this.barcodeSaveResponse = data
       if (this.barcodeSaveResponse.serviceMessage.code == 201) {
         console.log('Data saved successfully')
+        this.toast.initiate({
+          title: data.serviceMessage.type,
+          content: data.serviceMessage.message,
+          show: true,
+          type: ToastTypes.success
+        });
         // this.showSuccess()
-        this.showCustomSuccess(data.serviceMessage.type, data.serviceMessage.message, 10000);
+        // this.showCustomSuccess(data.serviceMessage.type, data.serviceMessage.message, 10000);
         // this.toastr.showSuccess(data.serviceMessage.message, data.serviceMessage.type)
       } else {
-        this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
+        // this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
         // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
+        this.toast.initiate({
+          title: data.serviceMessage.type,
+          content: data.serviceMessage.message,
+          show: true,
+          type: ToastTypes.error
+        });
       }
+
+      this.spinner.hide()
     })
     this.barcodeModelList = Array<BarcodeModel>();
     this.barcodeModelList.push(new BarcodeModel())
@@ -123,11 +145,11 @@ export class PromoSignageComponent implements OnInit {
   }
 
   showCustomSuccess(toastHeader: string, toastMessgae: string, delayValue: number) {
-    this.toastService.show(toastMessgae, { classname: 'bg-success text-light', delay: delayValue, header: toastHeader });
+    // this.toastService.show(toastMessgae, { classname: 'bg-success text-light', delay: delayValue, header: toastHeader });
   }
 
   showCustomDanger(toastHeader: string, toastMessgae: string, delayValue: number) {
-    this.toastService.show(toastMessgae, { classname: 'bg-danger text-light', delay: delayValue, header: toastHeader });
+    // this.toastService.show(toastMessgae, { classname: 'bg-danger text-light', delay: delayValue, header: toastHeader });
   }
 
   // showDanger(dangerTpl: string | TemplateRef<any>) {
@@ -143,7 +165,7 @@ export class PromoSignageComponent implements OnInit {
   // }
 
   ngOnDestroy(): void {
-    this.toastService.clear();
+    // this.toastService.clear();
   }
   open(content: any, index: any) {
     this.itemInfoService.setValue(this.barcodeModelList[index].barcode)
@@ -152,9 +174,10 @@ export class PromoSignageComponent implements OnInit {
   }
 
   getBarcodeDetails(index: any) {
+    this.spinner.show()
     this.itemInfoService.setValue(this.barcodeModelList[index].barcode)
     var siteCode
-    var tempUserObject = localStorage.getItem('userDetails')
+    var tempUserObject = sessionStorage.getItem('userDetails')
     if (tempUserObject !== null) {
       var userObject = JSON.parse(tempUserObject)
       siteCode = userObject.siteCode
@@ -195,6 +218,7 @@ export class PromoSignageComponent implements OnInit {
         // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
       }
     });
+    this.spinner.hide()
   }
 
   validateMrp(input: any, index: number) {

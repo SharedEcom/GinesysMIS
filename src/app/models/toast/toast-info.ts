@@ -1,7 +1,9 @@
+import { ToastTypes } from "./toast-types";
+
 export interface ToastInfo {
-    header: string;
-    body: string;
-    delay?: number;
-    textOrTpl: any;
-    classname: string
+    title: string;
+    content: string;
+    show?: boolean;
+    type?: ToastTypes;
+    progressWidth?: string;
 }

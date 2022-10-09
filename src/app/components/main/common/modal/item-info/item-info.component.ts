@@ -15,7 +15,7 @@ export class ItemInfoComponent implements OnInit {
 
   ngOnInit(): void {
  var siteCode
-    var tempUserObject = localStorage.getItem('userDetails')
+    var tempUserObject = sessionStorage.getItem('userDetails')
     if (tempUserObject !== null) {
       var userObject = JSON.parse(tempUserObject)
       siteCode = userObject.siteCode
