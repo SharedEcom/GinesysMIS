@@ -1,57 +1,368 @@
+<div *ngIf="isNavbarVisible">
+    <app-header></app-header>
+</div>
 <!-- <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist"></ul> -->
 <div class="container">
     <!-- Nav tabs -->
     <ul class="nav nav-pills nav-justified m-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button"
-                role="tab" aria-controls="home" aria-selected="true">Home</button>
+            <button class="nav-link active text-Warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
+                type="button" role="tab" aria-controls="home" aria-selected="true"><strong>Barcode / EANCODE
+                </strong></button>
+        </li>
+        <!--        <li class="nav-item" role="presentation">
+            <button class="nav-link text-warning" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
+                type="button" role="tab" aria-controls="profile" aria-selected="false"><strong>EAN
+                    Code</strong></button>
+        </li> -->
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-warning" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages"
+                type="button" role="tab" aria-controls="messages"
+                aria-selected="false"><strong>Messages</strong></button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button"
-                role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="messages-tab" data-bs-toggle="tab" data-bs-target="#messages" type="button"
-                role="tab" aria-controls="messages" aria-selected="false">Messages</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings" type="button"
-                role="tab" aria-controls="settings" aria-selected="false">Settings</button>
+            <button class="nav-link text-warning" id="settings-tab" data-bs-toggle="tab" data-bs-target="#settings"
+                type="button" role="tab" aria-controls="settings" aria-selected="false"><strong>Item
+                    Information</strong></button>
         </li>
     </ul>
-
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="d-flex justify-content-center align-items-center">
-                <div class="row g-2 d-flex justify-content-between align-items-justify">
-                    <div class="col-lg-2 mb-3">
-                        <label for="barcode" class="form-label">Enter Barcode</label>
+            <div class="my-4 mx-5">
+                <div *ngIf="barcodeModelList">
+                    <div *ngFor="let barcodeModel of barcodeModelList; let i = index"
+                        class="row g-2 d-flex justify-content-center align-items-justify">
+
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            &nbsp;
+                        </div>
+                        <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
+                            <label for="barcode" class="form-label">Enter Barcode</label>
+                        </div>
+                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
+                                [(ngModel)]="barcodeModel.barcode"
+                                (ngModelChange)="barcodeModel.barcode = $event.toUpperCase()">
+                            <!--                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
+                                [(ngModel)]="barcodeModel.barcode"> -->
+                        </div>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-right">
+                            <label for="quantity" class="form-label"> Print Quantity</label>
+                        </div>
+                        <div class="col-lg-1 mb-4 d-flex content-right align-items-right">
+                            <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3"
+                                [(ngModel)]="barcodeModel.printQuantity">
+                        </div>
+                        <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
+                            <select class="form-select" aria-label="Sinage Type"
+                                (change)="assignSignage(barcodeModel, $event)" (focusout)="getBarcodeDetails(i)">
+                                <option selected disabled>Sinage Type</option>
+                                <option *ngFor="let signageType of signageTypeList; let j = index" value="{{j}}">{{
+                                    signageType.text }}</option>
+                            </select>
+                        </div>
+                        <!-- <div *ngIf (change)="assignSignage(barcodeModel, $event)"  -->
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            <!--<input type="Inputtext" class="form-control" id="formInput" placeholder="Value" min="1" max="5"> -->
+                            <input type="number" class="form-control" id="Inputvalue" placeholder="0" maxlength="5"
+                                (change)="validateMrp(barcodeModel.inputQty, i)"
+                                [disabled]="barcodeModel.signageTypeCode==5" [(ngModel)]="barcodeModel.inputQty">
+                        </div>
+                        <!--                   <div>  -->
+                        <!-- <div *ngIf="barcodeModelList.length > 0 && i===0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                            <button class="btn btn-danger"
+                                (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
+                        </div> -->
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            <button class="btn btn-danger"
+                                (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
+                        </div>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            <button class="btn btn-success" (click)="open(content, i)">Info</button>
+                        </div>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm mb-4 d-flex justify-content-center align-items-justify">
+                            <ng-template #content let-c="close" let-d="dismiss">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modal-basic-title"> Selected Barcode # {{
+                                        barcodeModel.barcode }}</h4>
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                        (click)="d('Cross click')"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- <p>Hello, World!</p> -->
+                                    <app-item-info></app-item-info>
+                                </div>
+                                <div class="modal-footer text-danger">
+                                    <h6 class="modal-title" id="modal-basic-title"> <b>* Item Information diplayed on
+                                            this page could be alter as required by MDM </b></h6>
+                                    <button type="button" class="btn btn-outline-dark"
+                                        (click)="c('Close click')">Close</button>
+                                </div>
+                            </ng-template>
+                        </div>
                     </div>
-                    <div class="col-lg-3 mb-3">
-                        <input type="text" class="form-control" id="barcode" placeholder="123456789">
+                </div>
+                <div class="row g-2 d-flex justify-content-center align-items-justify">
+                    <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
+                        &nbsp;
                     </div>
-                    <div class="col-lg-2 mb-3">
-                        <label for="quantity" class="form-label">Print Quantity</label>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
                     </div>
-                    <div class="col-lg-2 mb-3">
-                        <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3">
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
                     </div>
-                    <div class="col-lg-1 mb-3 mx-2">
-                        <button class="btn btn-success"><span class="material-icons-outlined">
-                                add_circle
-                            </span></button>
+                    <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
                     </div>
-                    <div class="col-lg-1 mb-3 mx-4">
-                        <button class="btn btn-success"><span class="material-icons-outlined">
-                                info
-                            </span></button>
+                    <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
+                        <!-- <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify"> -->
+                        <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <button class="btn btn-success" (click)="printBarcodes()">Print</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profiles</div>
-        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Messages</div>
-        <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">Settings</div>
+        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+            <!-- COMMING SOON -->
+            <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
+                <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
+                    <app-comming-soon></app-comming-soon>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+            <!-- COMMING SOON -->
+            <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
+                <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
+                    <app-comming-soon></app-comming-soon>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-2">
+                    <p class="fs-3">Division</p>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown" id="division">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item">Div Api</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="fs-3">Section</p>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown" id="section">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item">Api</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="fs-6">Department</p>
+                </div>
+                <div class="col-2">
+                    <div class="dropdown" id="Department">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item fs-5">API</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <p class="fs-3">Article</p>
+                </div>
+                <div class="col-5">
+                    <div class="dropdown" id="Article">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Dropdown button
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li><a class="dropdown-item">API</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion" id="ItemProp1">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <h5> <b> Item Attributes </b> </h5>
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#Itemaccordion">
+                        <div class="accordion-body">
+                            <div class="d-flex justify-content-center align-items-justify">
+                                <h3 class="h3"><u>Category</u></h3>
+                            </div>
+                            <table class="mx-2 table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>First</th>
+                                        <th>Last</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>@mdo</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>@fat</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>@twitter</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <strong>Cat1</strong> <code> : </code>catAPI1
+                            <strong>Cat2</strong> <code> : </code>catAPI2
+                            <strong>Cat3</strong> <code> : </code>catAPI3
+                            <strong>Cat4</strong> <code> : </code>catAPI4
+                            <strong>Cat5</strong> <code> : </code>catAPI5
+                            <strong>Cat6</strong> <code> : </code>catAPI6
+                            <br>
+                            <strong>Attribute 1</strong> <code> : </code>ATT API1
+                            <strong>Attribute 2</strong> <code> : </code>ATT API2
+                            <strong>Attribute 3</strong> <code> : </code>ATT API3
+                            <strong>Attribute 4</strong> <code> : </code>ATT API4
+                            <strong>Attribute 5</strong> <code> : </code>ATT API5
+                            <strong>Attribute 6</strong> <code> : </code>ATT API6
+
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h1 class="accordion-header " id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <h5> <b> Item Pricing </b> </h5>
+                        </button>
+                    </h1>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#Itemaccordion">
+                        <div class="accordion-body">
+                            <strong>Standard Price </strong> <code> : </code> 9999.00
+                            <strong>MRP </strong> <code> : </code> 9999.00
+                            <strong>Last In Price </strong> <code> : </code> 9999.00
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <h5> <b> Item Image </b> </h5>
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#Itemaccordion">
+                        <div class="accordion-body">
+                            <div id="carouselItemInfo" class="carousel carousel-success slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+                                    <button type="button" data-bs-target="#carouselItemInfo" data-bs-slide-to="0"
+                                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselItemInfo" data-bs-slide-to="1"
+                                        aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselItemInfo" data-bs-slide-to="2"
+                                        aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active" data-bs-interval="10000">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="../../../../assets/images/1.jpg" class="d-block w-100"
+                                                    alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>First slide label</h5>
+                                            <p>Some representative placeholder content for the first slide.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item" data-bs-interval="2000">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="../../../../assets/images/2.jpg" class="d-block w-100"
+                                                    alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Second slide label</h5>
+                                            <p>Some representative placeholder content for the second slide.</p>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <img src="../../../../assets/images/3.jpg" class="d-block w-100"
+                                                    alt="...">
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Third slide label</h5>
+                                            <p>Some representative placeholder content for the third slide.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselItemInfo"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselItemInfo"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+        </div>
     </div>
 </div>
+<!-- 
+<button class="btn btn-primary" (click)="showStandard()" ngbTooltip="Will disappear in 5s">Standard toast</button>&nbsp;
+<button class="btn btn-success" (click)="showSuccess()" ngbTooltip="Will disappear in 10s">Success toast</button>&nbsp;
+
+<ng-template #dangerTpl>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24" viewBox="0 0 24 24">
+        <path
+            d="M10.872 6.831l1.695 3.904 3.654-1.561-1.79 3.426 3.333.954-3.417 1.338 2.231 4.196-4.773-2.582-2.869 2.287.413-3.004-3.792-.726 2.93-1.74-1.885-2.512 3.427.646.843-4.626zm-.786-6.831l-1.665 9.119-6.512-1.228 3.639 4.851-5.548 3.294 7.108 1.361-.834 6.076 5.742-4.577 9.438 5.104-4.288-8.064 6.834-2.677-6.661-1.907 3.25-6.22-6.98 2.982-3.523-8.114z" />
+    </svg>
+    Danger Danger !
+</ng-template>
+<button class="btn btn-danger" (click)="showDanger(dangerTpl)" ngbTooltip="Will disappear in 15s">Danger
+    toast</button>&nbsp;
+
+<app-toast aria-live="polite" aria-atomic="true"></app-toast> -->

@@ -1,0 +1,49 @@
+<div class="container overflow-hidden text-center">
+    <div class="row">
+        <div class="col-4">
+            <div class="p-3"><b>Site Name</b></div>
+        </div>
+        <div class="col-4">
+            <div class="p-3"><b>Site Short Name</b></div>
+        </div>
+        <div class="col-4">
+            <div class="p-3"><b>Site Code</b></div>
+        </div>
+    </div>
+    <hr>
+    <div class="row" *ngFor="let site of siteList; let i = index">
+        <div class="col-4">
+            <a class="p-3" (click)="changeSiteCodeInLocalStorage(siteList[i])">{{ site.siteName
+            }}</a>
+        </div>
+        <div class="col-4">
+            <div class="p-3">{{ site.shortName }}</div>
+        </div>
+        <div class="col-4">
+            <div class="p-3">{{ site.siteCode }}</div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Site Name</th>
+            <th scope="col">Site Short Name</th>
+            <th scope="col">Site Code</th>
+        </tr>
+    </thead>
+    <tbody class="table-group-divider">
+        <tr *ngFor="let site of siteList;">
+            <div class="d-flex flex-column gap-2 simple-list-example-scrollspy">
+                <td>
+                    <a class="nav-link" (dblclick)="changeSiteCodeInLocalStorage('site.siteCode')">{{ site.siteName
+                        }}</a>
+                </td>
+            </div>
+            <td (dblclick)="changeSiteCodeInLocalStorage('site.siteCode')">{{ site.shortName }}</td>
+            <td (dblclick)="changeSiteCodeInLocalStorage('site.siteCode')">{{ site.siteCode }}</td>
+        </tr>
+    </tbody>
+</table> -->

@@ -32,6 +32,7 @@ speed-measure-plugin*.json
 .history/*
 
 # misc
+/.angular/cache
 /.sass-cache
 /connect.lock
 /coverage
@@ -44,3 +45,15 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+
+#Custom
+.vscode/*
+/angular.json
+/package.json
+/package-lock.json
+/src/polyfills.ts
+/tsconfig.json
+tsconfig.json
+src/polyfills.ts
+package-lock.json
+package-lock.json
