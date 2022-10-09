@@ -17,7 +17,7 @@
                         Item Master
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <li><a class="dropdown-item">Action</a></li>
+                        <li><a class="dropdown-item" routerLink="/extra-udf">Extra UDF</a></li>
                         <li>
                             <a class="dropdown-item">Another action</a>
                         </li>
@@ -25,7 +25,7 @@
                             <a class="dropdown-item">
                                 Submenu &raquo;
                             </a>
-                            <ul class="list-unstyled dropdown-submenu">
+<!--                            <ul class="list-unstyled dropdown-submenu">
                                 <li>
                                     <a class="dropdown-item">Submenu item 1</a>
                                 </li>
@@ -49,7 +49,7 @@
                                 <li>
                                     <a class="dropdown-item">Submenu item 5</a>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </li>
                     </ul>
                 </li>
@@ -69,6 +69,44 @@
                     </ul>
                 </li>
             </ul>
+            <form class="d-flex" role="search">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item px-5">
+                            <a class="nav-link link-light" role="button" aria-expanded="false">
+                                {{ userObject.siteName }}
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle link-light" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Profile
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <li><a class="dropdown-item" (click)="openModal(content)">Choose Site</a></li>
+                                <li><a class="dropdown-item" (click)="logoutUser()">Logout User</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </form>
         </div>
     </div>
 </nav>
+
+<div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+    <ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title"> Choose Site </h4>
+            <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+            <!-- <p>Hello, World!</p> -->
+            <!-- <app-item-info></app-item-info> -->
+            <app-site-list></app-site-list>
+        </div>
+        <div class="modal-footer text-danger">
+            <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+        </div>
+    </ng-template>
+</div>
