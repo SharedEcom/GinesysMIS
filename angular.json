@@ -30,7 +30,7 @@
             "styles": [
               "src/styles.css",
               "node_modules/material-design-icons/iconfont/material-icons.css",
-              "node_modules/ngx-toastr/toastr.css"
+              "node_modules/ngx-spinner/animations/square-jelly-box.css"
             ],
             "scripts": [],
             "vendorChunk": true,
@@ -44,7 +44,7 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
+                  "replace": "src/environments/environment.non-prod.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
@@ -119,6 +119,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ginesys-mis"
+  }
 }

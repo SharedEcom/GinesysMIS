@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-header',
@@ -9,23 +10,39 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
 
   isAuthToken: boolean = false;
+  userObject: any
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, config: NgbModalConfig, private modalService: NgbModal) { 
+    config.backdrop = 'static';
+    config.keyboard = true;
+  }
 
   ngOnInit(): void {
-    if (localStorage.getItem('authToken') === null) {
+    if (sessionStorage.getItem('authToken') === null && sessionStorage.getItem('userDetails') === null) {
       this.isAuthToken = false
     } else {
       this.isAuthToken = true
+      var tempUserObject = sessionStorage.getItem('userDetails')
+      if (tempUserObject !== null) {
+        this.userObject = JSON.parse(tempUserObject)
+      }
+      
     }
   }
 
   logoutUser() {
-    if (localStorage.getItem('authToken') !== null) { 
-      localStorage.removeItem('authToken') 
+    if (sessionStorage.getItem('authToken') !== null && sessionStorage.getItem('userDetails') !== null) { 
+      sessionStorage.removeItem('authToken') 
+      sessionStorage.removeItem('userDetails') 
       this.router.navigateByUrl('/')
-      // localStorage.clear()
+      // sessionStorage.clear()
+    } else {
+      this.router.navigateByUrl('/')
     }
+  }
+
+  openModal(content: any) {
+    this.modalService.open(content, { size: 'xl', centered: true, scrollable: true });
   }
 
 }

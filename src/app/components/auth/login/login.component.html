@@ -1,3 +1,4 @@
+
 <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
     <div class="container">
         <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
@@ -10,7 +11,7 @@
                             </div>
                             <div class="row pb-3">
                                 <img class="img-fluid"
-                                    src="https://ginesys.in/sites/default/files/ginesys/ginesys-logo-new-dark.svg"
+                                    src="assets/images/ginesyslogo.png"
                                     height=20 width=50 alt="Logo">
                             </div>
                             <div class="row py-3">
@@ -30,7 +31,7 @@
                         <div class="">
                             <div class="row pb-3 my-4">
                                 <div class="col-sm-6 d-flex p-2 justify-content-start align-items-center">
-                                    <img src="https://www.vmartretail.com/logo.png" height="120" width="120"
+                                    <img src="assets/images/CUSTOMER_LOGO.JPEG" height="120" width="120"
                                         valign="Centre" alt="Logo">
                                 </div>
                                 <div class="col-sm-6 d-flex p-2 justify-content-end align-items-center">
@@ -41,20 +42,22 @@
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text" id="addon-wrapping">@</span>
                                     <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                                        aria-describedby="addon-wrapping" [(ngModel)]="username">
+                                        aria-describedby="addon-wrapping" [(ngModel)]="username"
+                                        (keyup.enter)="login(username, password)">
                                 </div>
                             </div>
                             <div class="mb-3 row">
                                 <div class="input-group flex-nowrap">
                                     <span class="input-group-text px-3" id="addon-wrapping"><b>*</b></span>
                                     <input type="password" class="form-control" placeholder="Password"
-                                        aria-label="Password" aria-describedby="addon-wrapping" [(ngModel)]="password">
+                                        aria-label="Password" aria-describedby="addon-wrapping" [(ngModel)]="password"
+                                        (keyup.enter)="login(username, password)">
                                 </div>
                             </div>
                             <div class="row py-3">
                                 <div class="d-grid gap-2">
                                     <a class="btn btn-success" type="button" (click)="login(username, password)"
-                                        routerLinkActive="active">Sign-In</a>
+                                        routerLinkActive="active" (keyup.enter)="login(username, password)">Sign-In</a>
                                 </div>
                             </div>
                         </div>

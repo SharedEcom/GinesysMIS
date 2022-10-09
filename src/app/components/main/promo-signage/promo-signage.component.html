@@ -1,12 +1,16 @@
+<div *ngIf="isNavbarVisible">
+    <app-header></app-header>
+</div>
 <!-- <ul class="nav nav-pills nav-justified" id="pills-tab" role="tablist"></ul> -->
 <div class="container">
     <!-- Nav tabs -->
     <ul class="nav nav-pills nav-justified m-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active text-Warning" id="home-tab" data-bs-toggle="tab" data-bs-target="#home"
-                type="button" role="tab" aria-controls="home" aria-selected="true"><strong>Barcode /  EANCODE </strong></button>
+                type="button" role="tab" aria-controls="home" aria-selected="true"><strong>Barcode / EANCODE
+                </strong></button>
         </li>
-<!--        <li class="nav-item" role="presentation">
+        <!--        <li class="nav-item" role="presentation">
             <button class="nav-link text-warning" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile"
                 type="button" role="tab" aria-controls="profile" aria-selected="false"><strong>EAN
                     Code</strong></button>
@@ -25,59 +29,127 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-            <div class="container my-4 mx-5">
+            <div class="my-4 mx-5">
                 <div *ngIf="barcodeModelList">
                     <div *ngFor="let barcodeModel of barcodeModelList; let i = index"
                         class="row g-2 d-flex justify-content-center align-items-justify">
+
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            &nbsp;
+                        </div>
                         <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
                             <label for="barcode" class="form-label">Enter Barcode</label>
                         </div>
                         <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <input type="text" class="form-control" id="barcode" placeholder="123456789"
-                                [(ngModel)]="barcodeModel.barcode">
+                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
+                                [(ngModel)]="barcodeModel.barcode"
+                                (ngModelChange)="barcodeModel.barcode = $event.toUpperCase()">
+                            <!--                            <input type="text" class="form-control" id="barcode" placeholder="89.../VR.../VM.."
+                                [(ngModel)]="barcodeModel.barcode"> -->
                         </div>
-                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <label for="quantity" class="form-label">Print Quantity</label>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-right">
+                            <label for="quantity" class="form-label"> Print Quantity</label>
                         </div>
-                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                        <div class="col-lg-1 mb-4 d-flex content-right align-items-right">
                             <input type="number" class="form-control" id="quantity" placeholder="1" maxlength="3"
                                 [(ngModel)]="barcodeModel.printQuantity">
                         </div>
                         <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
                             <select class="form-select" aria-label="Sinage Type"
-                                (change)="assignSignage(barcodeModel, $event)">
+                                (change)="assignSignage(barcodeModel, $event)" (focusout)="getBarcodeDetails(i)">
                                 <option selected disabled>Sinage Type</option>
                                 <option *ngFor="let signageType of signageTypeList; let j = index" value="{{j}}">{{
                                     signageType.text }}</option>
                             </select>
                         </div>
-                        <div *ngIf="i==0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
+                        <!-- <div *ngIf (change)="assignSignage(barcodeModel, $event)"  -->
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            <!--<input type="Inputtext" class="form-control" id="formInput" placeholder="Value" min="1" max="5"> -->
+                            <input type="number" class="form-control" id="Inputvalue" placeholder="0" maxlength="5"
+                                (change)="validateMrp(barcodeModel.inputQty, i)"
+                                [disabled]="barcodeModel.signageTypeCode==5" [(ngModel)]="barcodeModel.inputQty">
                         </div>
-                        <div *ngIf="i!=0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <!--                   <div>  -->
+                        <!-- <div *ngIf="barcodeModelList.length > 0 && i===0" class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                            <button class="btn btn-danger"
+                                (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
+                        </div> -->
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
                             <button class="btn btn-danger"
                                 (click)="decreasePromoArraySize(barcodeModel)">Remove</button>
                         </div>
-                        <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
-                            <button class="btn btn-success">Info</button>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            <button class="btn btn-success" (click)="open(content, i)">Info</button>
+                        </div>
+                        <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                            &nbsp;
+                        </div>
+                        <div class="col-sm mb-4 d-flex justify-content-center align-items-justify">
+                            <ng-template #content let-c="close" let-d="dismiss">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="modal-basic-title"> Selected Barcode # {{
+                                        barcodeModel.barcode }}</h4>
+                                    <button type="button" class="btn-close" aria-label="Close"
+                                        (click)="d('Cross click')"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <!-- <p>Hello, World!</p> -->
+                                    <app-item-info></app-item-info>
+                                </div>
+                                <div class="modal-footer text-danger">
+                                    <h6 class="modal-title" id="modal-basic-title"> <b>* Item Information diplayed on
+                                            this page could be alter as required by MDM </b></h6>
+                                    <button type="button" class="btn btn-outline-dark"
+                                        (click)="c('Close click')">Close</button>
+                                </div>
+                            </ng-template>
                         </div>
                     </div>
                 </div>
-                <div class="row justify-content-end">
-                    <div class="col-2">
-                        <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>
-                        <!-- <button class="btn btn-success" (click)="showSuccess()">Submit</button> -->
+                <div class="row g-2 d-flex justify-content-center align-items-justify">
+                    <div class="col-lg-1 mb-3 d-flex justify-content-center align-items-justify">
+                        &nbsp;
                     </div>
-                    <div class="col-2">
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-1 mb-4 d-flex justify-content-center align-items-justify">
+                        &nbsp;
+                    </div>
+                    <div class="col-lg-2 mb-4 btn-group d-flex justify-content-center align-items-justify">
+                        <!-- <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify"> -->
+                        <button class="btn btn-success" (click)="increasePromoArraySize()">Add</button>
+                        <!-- </div> -->
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
+                        <button class="btn btn-success" (click)="saveBarcode(barcodeModelList)">Submit</button>
+                    </div>
+                    <div class="col-lg-2 mb-4 d-flex justify-content-center align-items-justify">
                         <button class="btn btn-success" (click)="printBarcodes()">Print</button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">Profiles</div>
-        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">Messages</div>
+        <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
+            <!-- COMMING SOON -->
+            <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
+                <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
+                    <app-comming-soon></app-comming-soon>
+                </div>
+            </div>
+        </div>
         <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-            <div class="row">
+            <!-- COMMING SOON -->
+            <div style="background-image: linear-gradient(135deg, #4dd358 10%, #FFFFFF 100%)">
+                <div class="fullscreen d-flex p-2 justify-content-center align-items-center">
+                    <app-comming-soon></app-comming-soon>
+                </div>
+            </div>
+            <!-- <div class="row">
                 <div class="col-2">
                     <p class="fs-3">Division</p>
                 </div>
@@ -275,7 +347,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 </div>
+<!-- 
+<button class="btn btn-primary" (click)="showStandard()" ngbTooltip="Will disappear in 5s">Standard toast</button>&nbsp;
+<button class="btn btn-success" (click)="showSuccess()" ngbTooltip="Will disappear in 10s">Success toast</button>&nbsp;
+
+<ng-template #dangerTpl>
+    <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24" viewBox="0 0 24 24">
+        <path
+            d="M10.872 6.831l1.695 3.904 3.654-1.561-1.79 3.426 3.333.954-3.417 1.338 2.231 4.196-4.773-2.582-2.869 2.287.413-3.004-3.792-.726 2.93-1.74-1.885-2.512 3.427.646.843-4.626zm-.786-6.831l-1.665 9.119-6.512-1.228 3.639 4.851-5.548 3.294 7.108 1.361-.834 6.076 5.742-4.577 9.438 5.104-4.288-8.064 6.834-2.677-6.661-1.907 3.25-6.22-6.98 2.982-3.523-8.114z" />
+    </svg>
+    Danger Danger !
+</ng-template>
+<button class="btn btn-danger" (click)="showDanger(dangerTpl)" ngbTooltip="Will disappear in 15s">Danger
+    toast</button>&nbsp;
+
+<app-toast aria-live="polite" aria-atomic="true"></app-toast> -->
