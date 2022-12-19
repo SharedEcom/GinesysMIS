@@ -16,15 +16,15 @@
                         <div class="row">
                             <!-- <div class="d-flex justify-content-center"> -->
                             <div class="banner-name mb-2">
-                                <strong class="d-flex justify-content-center">{{ promoSignage.bannerName }}</strong>
-                                <strong class="d-flex justify-content-center">FREE</strong>
+                                <strong class="d-flex justify-content-center mx-5">{{ promoSignage.bannerName }} FREE</strong>
+                                <!-- <strong class="d-flex justify-content-center">&nbsp;</strong> -->
+                                <!-- <strong class="d-flex justify-content-center">FREE</strong> -->
                             </div>
                             <!-- <p class="banner-name mb-0"></p> -->
                             <!-- </div> -->
                             <!-- <div class="d-flex justify-content-center"> -->
                             <!-- <p class="pb-12 banner-name mb-2"></p> -->
                             <!-- </div> -->
-
                         </div>
                     </div>
                 </div>
@@ -34,8 +34,8 @@
                         <div class="row">
                             <!-- <p class="banner-name mb-0"><strong>{{ promoSignage.bannerName }}</strong></p> -->
                             <div class="banner-name mb-2">
-                                <strong class="d-flex justify-content-center">{{ promoSignage.bannerName }}</strong>
-                                <strong class="d-flex justify-content-center">&nbsp;</strong>
+                                <strong class="d-flex justify-content-center mx-5">{{ promoSignage.bannerName }}</strong>
+                                <!-- <strong class="d-flex justify-content-center">&nbsp;</strong> -->
                             </div>
                         </div>
                     </div>
@@ -43,17 +43,17 @@
                 <div class="row data-row">
                     <div class="p-6 col-5 d-flex justify-content-start"
                         *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4 || promoSignage.barcodeType==5)">
-                        <p class="mrp-name pe-0 me-0">MRP <del>&#x20b9; {{ promoSignage.listedMrp }}</del>
+                        <p class="mrp-name pe-0 me-0"> MRP  &#x20b9;   <del> {{ promoSignage.listedMrp }}</del>
                         </p>
                     </div>
                     <div class="p-6 col-5 d-flex justify-content-start"
                         *ngIf="(promoSignage.barcodeType==3 || promoSignage.barcodeType==4 || promoSignage.barcodeType==5)">
-                        <p class="mrp-name pe-0 me-0">MRP &#x20b9; {{ promoSignage.listedMrp }}
+                        <p class="mrp-name pe-0 me-0"> MRP  &#x20b9;  {{ promoSignage.listedMrp }}
                         </p>
                     </div>
                     <div *ngIf="!(promoSignage.barcodeType==3 || promoSignage.barcodeType==4 || promoSignage.barcodeType==5)"
                         class="p-6 col-7 d-flex justify-content-end">
-                        <p class="mrp-name pe-0 me-0">VMART PRICE
+                        <p class="mrp-name pe-0 me-0">V MART PRICE
                             <strong>&#x20b9; {{ promoSignage.mrp }}</strong>
                         </p>
                     </div>

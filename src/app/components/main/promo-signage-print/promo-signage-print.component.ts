@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { PromoSignageResponse } from 'src/app/models/screens/promo-signage-print/promo-signage-print-response';
+import { PromoSignageResponse } from '../../../models/screens/promo-signage-print/promo-signage-print-response';
 import { PromoSignagePrintService } from '../../../services/screen/promo-signage-print/promo-signage-print.service';
 
 @Component({

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginResponse } from 'src/app/models/auth/login-response';
+import { LoginResponse } from '../../../models/auth/login-response';
 
 import { LoginRequest } from '../../../models/auth/login-request';
 
