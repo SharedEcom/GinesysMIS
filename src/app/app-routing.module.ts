@@ -5,6 +5,7 @@ import { ExtraUdfComponent } from './components/main/extra-udf/extra-udf.compone
 import { HomeComponent } from './components/main/home/home.component';
 import { PromoSignagePrintComponent } from './components/main/promo-signage-print/promo-signage-print.component';
 import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
+import { FootfallComponent } from './components/main/footfall/footfall.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
     path: 'extra-udf',
     component: ExtraUdfComponent
   },
+{
+  path: 'footfall',
+  component: FootfallComponent
+}
 ];
 
 @NgModule({

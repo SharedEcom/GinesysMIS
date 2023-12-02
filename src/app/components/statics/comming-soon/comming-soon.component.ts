@@ -20,5 +20,9 @@ export class CommingSoonComponent implements OnInit {
       this.isNavbarVisible = this.navbarService.isNavbarVisible
     }
   }
+  goToMainMenu() {
+    // Navigate to the main menu route (replace 'main-menu' with your actual route)
+    this.router.navigate(['/home']);
+  }
 
 }

@@ -84,7 +84,8 @@ export class LoginComponent implements OnInit {
   assignTokenAndNavigate() {
     sessionStorage.setItem('authToken', this.loginResponse.result.authToken)
     sessionStorage.setItem('userDetails', JSON.stringify(this.loginResponse.result.userDetails))
-    this.router.navigateByUrl('/promo-signage')
+this.router.navigateByUrl('/home')
+    // this.router.navigateByUrl('/promo-signage')
     this.accessApi()
   }
 

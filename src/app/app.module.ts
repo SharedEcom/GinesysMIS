@@ -19,6 +19,7 @@ import { ToastComponent } from './components/main/common/toast/toast.component';
 import { ItemInfoComponent } from './components/main/common/modal/item-info/item-info.component';
 import { SiteListComponent } from './components/main/common/modal/site-list/site-list.component';
 import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
+import { FootfallComponent } from './components/main/footfall/footfall.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PromoSignageComponent } from './components/main/promo-signage/promo-sig
     ToastComponent,
     ItemInfoComponent,
     SiteListComponent,
+    FootfallComponent,
   ],
   imports: [
     BrowserModule,

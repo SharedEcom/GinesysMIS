@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-success bg-success">
     <div class="container-fluid">
         <a class="navbar-brand">
-            <img src="https://www.vmartretail.com/logo.png" alt="" width="30" height="30">
+            <img src="assets/images/CUSTOMER_LOGO.JPEG" alt="" width="30" height="30">
+            <!-- <img src="https://www.vmartretail.com/logo.png" alt="" width="30" height="30"> -->
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -12,10 +13,10 @@
                     <a class="nav-link link-light" target="_blank" href="https://www.vmartretail.com/">VMART Shop</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle link-light" id="navbarDropdown" role="button"
+                     <a class="nav-link dropdown-toggle link-light" id="navbarDropdown" role="button"
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Item Master
-                    </a>
+                    </a>  
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <li><a class="dropdown-item" routerLink="/extra-udf">Extra UDF</a></li>
                         <li>
@@ -25,7 +26,7 @@
                             <a class="dropdown-item">
                                 Submenu &raquo;
                             </a>
-<!--                            <ul class="list-unstyled dropdown-submenu">
+                            <!--                            <ul class="list-unstyled dropdown-submenu">
                                 <li>
                                     <a class="dropdown-item">Submenu item 1</a>
                                 </li>
@@ -66,6 +67,10 @@
                         <li>
                             <a class="dropdown-item">Item Master Information</a>
                         </li>
+                        <li>
+                            <a class="dropdown-item" routerLink="/footfall" routerLinkActive="active"> Foot fall Hourly
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -74,7 +79,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item px-5">
                             <a class="nav-link link-light" role="button" aria-expanded="false">
-                                {{ userObject.siteName }}
+                                <h5 style="color: yellow; "> {{ userObject.siteName }}</h5>
                             </a>
                         </li>
                         <li class="nav-item dropdown">
