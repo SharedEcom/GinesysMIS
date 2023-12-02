@@ -10,6 +10,7 @@ import { ToastService } from '../../../services/common/toast/toast.service';
 import { ItemInfoServiceService } from '../../../services/common/modal/item-info/item-info-service.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastTypes } from 'src/app/models/toast/toast-types';
+import { ExcelService } from 'src/app/services/common/excel/excel.service';
 
 @Component({
   selector: 'app-promo-signage',
@@ -26,11 +27,16 @@ export class PromoSignageComponent implements OnInit {
   barcodeSaveResponse = new BarcodeSaveResponse()
 
   itemInfo: any
+  excelResponse: any
 
   maxMrp: number = 0
   minMrp: number = 0
 
   mrp: any
+
+  selectedFiles?: FileList;
+  currentFile?: File;
+  fileUploadResponse?: any;
 
   signageTypeList = [
     { id: 1, text: "SAVE Rs." },
@@ -46,12 +52,13 @@ export class PromoSignageComponent implements OnInit {
   constructor(private promoSignageService: PromoSignageService,
     private router: Router,
     private navbarService: NavbarService,
-    private sessionService: SessionService, 
-    config: NgbModalConfig, 
-    private modalService: NgbModal, 
-    private itemInfoService: ItemInfoServiceService, 
+    private sessionService: SessionService,
+    config: NgbModalConfig,
+    private modalService: NgbModal,
+    private itemInfoService: ItemInfoServiceService,
     private spinner: NgxSpinnerService,
-    private toast: ToastService) {
+    private toast: ToastService,
+    private excelService: ExcelService) {
     config.backdrop = 'static';
     config.keyboard = true;
   }
@@ -69,6 +76,15 @@ export class PromoSignageComponent implements OnInit {
         this.router.navigateByUrl("/")
       }
     }
+  }
+
+  showToaster(data:any, toastType: ToastTypes) {
+    this.toast.initiate({
+      title: data.serviceMessage.type,
+      content: data.serviceMessage.message,
+      show: true,
+      type: toastType
+    });
   }
 
   increasePromoArraySize() {
@@ -114,24 +130,26 @@ export class PromoSignageComponent implements OnInit {
       this.barcodeSaveResponse = data
       if (this.barcodeSaveResponse.serviceMessage.code == 201) {
         console.log('Data saved successfully')
-        this.toast.initiate({
-          title: data.serviceMessage.type,
-          content: data.serviceMessage.message,
-          show: true,
-          type: ToastTypes.success
-        });
+        this.showToaster(data, ToastTypes.success)
+        // this.toast.initiate({
+        //   title: data.serviceMessage.type,
+        //   content: data.serviceMessage.message,
+        //   show: true,
+        //   type: ToastTypes.success
+        // });
         // this.showSuccess()
         // this.showCustomSuccess(data.serviceMessage.type, data.serviceMessage.message, 10000);
         // this.toastr.showSuccess(data.serviceMessage.message, data.serviceMessage.type)
       } else {
         // this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
         // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
-        this.toast.initiate({
-          title: data.serviceMessage.type,
-          content: data.serviceMessage.message,
-          show: true,
-          type: ToastTypes.error
-        });
+        this.showToaster(data, ToastTypes.error)
+        // this.toast.initiate({
+        //   title: data.serviceMessage.type,
+        //   content: data.serviceMessage.message,
+        //   show: true,
+        //   type: ToastTypes.error
+        // });
       }
 
       this.spinner.hide()
@@ -234,4 +252,71 @@ export class PromoSignageComponent implements OnInit {
       // }
     }
   }
+
+  downloadEmptyExcel() {
+    this.spinner.show()
+    var siteCode
+    var tempUserObject = sessionStorage.getItem('userDetails')
+    if (tempUserObject !== null) {
+      var userObject = JSON.parse(tempUserObject)
+      siteCode = userObject.siteCode
+    }
+    let response = this.excelService.getEmptyExcel(siteCode);
+
+    response.subscribe((data: any) => {
+      if (data.serviceMessage.code == 200) {
+        this.excelResponse = data.result
+        var mediaType = "data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,";
+        var a = document.createElement('a');
+        a.href = mediaType + data.result;
+        a.download = 'Barcode-BulkUploadFile.xlsx';
+        a.click()
+        this.spinner.hide()
+      }
+    });
+  }
+
+  uploadFile(event: any): void {
+    this.spinner.show()
+    var siteCode
+    var tempUserObject = sessionStorage.getItem('userDetails')
+    if (tempUserObject !== null) {
+      var userObject = JSON.parse(tempUserObject)
+      siteCode = userObject.siteCode
+    }
+    
+    this.selectedFiles = event.target.files;
+
+    if (this.selectedFiles) {
+      const file: File | null = this.selectedFiles.item(0);
+
+      if (file) {
+        this.currentFile = file;
+
+        let response = this.excelService.uploadBarcodeFile(this.currentFile, siteCode)
+        response.subscribe((data: any) => {
+          if (data.serviceMessage.code == 200) {
+            this.fileUploadResponse = data.result
+            this.currentFile = undefined;
+            this.showToaster(data, ToastTypes.success)
+            this.spinner.hide()
+          } else {
+            this.showToaster(data, ToastTypes.error)
+          }
+        }, (error: any) => {
+          console.log(error)
+          this.toast.initiate({
+            title: error.error.error,
+            content: error.error.message,
+            show: true,
+            type: ToastTypes.error
+          });
+        });
+      }
+
+      this.selectedFiles = undefined;
+    }
+    this.spinner.hide()
+  }
+
 }

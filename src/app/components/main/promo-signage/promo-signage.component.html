@@ -29,6 +29,24 @@
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
+
+            <div class="my-4 mx-5">
+                <div class="row d-flex align-self-center justify-content-lg-evenly">
+                    <div class="col-4 mb-4 d-flex justify-content-evenly align-items-center">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col-4 mb-4 d-flex justify-content-evenly align-items-center">
+                        <label>&nbsp;</label>
+                    </div>
+                    <div class="col-4 mb-4 px-5 d-flex justify-content-evenly align-items-center">
+                        <input style="display: none;" id="upload" onclick="this.value = null" (change)="uploadFile($event)" type="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">
+                        <label for="upload" class="btn btn-success">Upload File</label>
+                        <button class="btn btn-success" (click)="downloadEmptyExcel()">Download Template</button>
+                        <!-- <button class="btn btn-success">Download Error File</button> -->
+                    </div>
+                </div>
+            </div>
+
             <div class="my-4 mx-5">
                 <div *ngIf="barcodeModelList">
                     <div *ngFor="let barcodeModel of barcodeModelList; let i = index"
