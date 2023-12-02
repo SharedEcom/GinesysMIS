@@ -16,18 +16,13 @@ export class FootfallService {
 
   public viewFootfall(today: any): Observable<FootfallViewResponse> {
     const storageData = sessionStorage.getItem("userDetails")
-    const userDetails = (storageData || null !== storageData) ? JSON.parse(storageData) : null;
-    console.log(userDetails);
-    
-    var siteCode: any = userDetails.siteCode
-    console.log(siteCode);
-    
-    const httpHeaders = new HttpHeaders().set("Authorization", this.BEARER + sessionStorage.getItem('authToken'))
-    .set("userCode", userDetails.ecode)
-    .set("siteCode", siteCode)
-    .set("dt", today)
-    return this.httpClient.get<FootfallViewResponse>(this.BASE_URL + this.VIEW_FOOT_FALL
-      , { headers: httpHeaders })
-  }
 
+    const httpHeaders = new HttpHeaders().set("Authorization", this.BEARER + sessionStorage.getItem('authToken'))
+      .set("userCode", String(((storageData || null !== storageData) ? JSON.parse(storageData) : null).ecode))
+      .set("siteCode", String(((storageData || null !== storageData) ? JSON.parse(storageData) : null).siteCode))
+      // .set("siteCode", siteCode)
+      .set("dt", String(today))
+      
+    return this.httpClient.get<FootfallViewResponse>(this.BASE_URL + this.VIEW_FOOT_FALL, { headers: httpHeaders })
+  }
 }

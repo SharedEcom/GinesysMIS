@@ -6,7 +6,8 @@
         <p> </p>
         <h1> </h1>
         <p style="color: red; font-family: Arial, sans-serif;  font-size: 20px; font-weight: bold;">
-        <strong>Please Enter Foot Fall for the day - {{ currentDate }}</strong></p>
+            <strong>Please Enter Foot Fall for the day - {{ currentDate }}</strong>
+        </p>
         <p> </p>
         <!---    <h1>Questionnaire</h1>
     <form action="submit_answers.php" method="post">
@@ -26,66 +27,73 @@
 
         <input type="submit" value="Submit">
     </form>    -->
-        <form (ngSubmit)="submitForm()" #questionForm="ngForm">
+        <form #questionForm="ngForm" ngSubmit="">
             <!-- Question 1-10 -->
             <div>
-                <label for="Slot01 "><strong> 01. Foot Fall from 10:00 am to 11:59 am </strong></label>
+                <label for="slot01"><strong> 01. Foot Fall from 10:00 am to 11:59 am </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot01" name="slot01" [(ngModel)]="slot01" required
                     (input)="validateInput(slot01)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot01?.valid && questionForm.controls.slot01?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-                <label for="Slot02 "><strong> 02. Foot Fall from 12:00 pm to 01:59 pm </strong></label>
+                <label for="slot02"><strong> 02. Foot Fall from 12:00 pm to 01:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot02" name="slot02" [(ngModel)]="slot02" required
                     (input)="validateInput(slot02)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot02?.valid && questionForm.controls.slot02?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-                <label for="Slot03 "><strong> 03. Foot Fall from 02:00 pm to 03:59 pm </strong></label>
+                <label for="slot03"><strong> 03. Foot Fall from 02:00 pm to 03:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot03" name="slot03" [(ngModel)]="slot03" required
                     (input)="validateInput(slot03)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot03?.valid && questionForm.controls.slot03?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-                <label for="Slot04 "><strong> 04. Foot Fall from 04:00 pm to 05:59 pm </strong></label>
+                <label for="slot04"><strong> 04. Foot Fall from 04:00 pm to 05:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot04" name="slot04" [(ngModel)]="slot04" required
                     (input)="validateInput(slot04)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot04?.valid && questionForm.controls.slot04?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-                <label for="Slot05 "><strong> 05. Foot Fall from 06:00 pm to 07:59 pm </strong></label>
+                <label for="slot05"><strong> 05. Foot Fall from 06:00 pm to 07:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot05" name="slot05" [(ngModel)]="slot05" required
                     (input)="validateInput(slot05)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot05?.valid && questionForm.controls.slot05?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-                <label for="Slot06 "><strong> 06. Foot Fall from 08:00 pm to 09:59 pm </strong></label>
+                <label for="slot06"><strong> 06. Foot Fall from 08:00 pm to 09:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot06" name="slot06" [(ngModel)]="slot06" required
                     (input)="validateInput(slot06)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot06?.valid && questionForm.controls.slot06?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-                <label for="Slot07 "><strong> 07. Foot Fall from 10:00 pm to 11:59 pm </strong></label>
+                <label for="slot07"><strong> 07. Foot Fall from 10:00 pm to 11:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot07" name="slot07" [(ngModel)]="slot07" required
                     (input)="validateInput(slot07)" min="0" class="right-aligned-input">
                 <div *ngIf="!questionForm.controls.slot07?.valid && questionForm.controls.slot07?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
+                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                        than or equal to 0.</p>
                 </div>
                 <p> </p>
-<!--                <label for="Slot08 "><strong> 08. Foot Fall from 10:00 pm to 11:59 pm </strong></label>
+                <!--                <label for="Slot08 "><strong> 08. Foot Fall from 10:00 pm to 11:59 pm </strong></label>
                 <span class="mx-5"></span>
                 <input type="number" id="slot08" name="slot08" [(ngModel)]="slot08" required
                     (input)="validateInput(slot08)" min="0" class="right-aligned-input  ">
@@ -103,11 +111,11 @@
           <p> </p>
         </div> 
 -->
-<div class="m-4 pt-4 d-flex justify-content-center align-items-justify">
-    <button class="btn btn-success" type="submit" (click)="submitData()">Submit</button>
-</div>
+            <div class="m-4 pt-4 d-flex justify-content-center align-items-justify">
+                <button class="btn btn-success" type="button" (click)="submitData()">Submit</button>
+            </div>
 
-<!-- <button type="submit">Submit</button> -->
+            <!-- <button type="submit">Submit</button> -->
         </form>
     </div>
     <div>

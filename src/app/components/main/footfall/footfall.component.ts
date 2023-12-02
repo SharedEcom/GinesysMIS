@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { NavbarService } from 'src/app/services/common/navbar/navbar.service';
 import { FootfallService } from 'src/app/services/screen/footfall/footfall.service';
 import { FootfallViewResponse } from 'src/app/models/screens/footfall/footfall-view-response';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-footfall',
@@ -11,7 +13,11 @@ import { FootfallViewResponse } from 'src/app/models/screens/footfall/footfall-v
   styleUrls: ['./footfall.component.css']
 })
 export class FootfallComponent implements OnInit {
+
+  // questionForm: NgForm
+
   isNavbarVisible: boolean = false;
+  id: number = 0;
   slot01: number = 0;
   slot02: number = 0;
   slot03: number = 0;
@@ -20,6 +26,7 @@ export class FootfallComponent implements OnInit {
   slot06: number = 0;
   slot07: number = 0;
   slot08: number = 0;
+  
   currentDate: string = '';
 
   footfallViewResponse = new FootfallViewResponse()
@@ -28,7 +35,8 @@ export class FootfallComponent implements OnInit {
     private router: Router,
     private navbarService: NavbarService,
     private sessionService: SessionService,
-    private footfallService: FootfallService
+    private footfallService: FootfallService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit(): void {
@@ -57,24 +65,28 @@ export class FootfallComponent implements OnInit {
         this.router.navigateByUrl("/")
       }
     }
-    this.updateCurrentDate();
+
+    this.spinner.show()
 
     let response = this.footfallService.viewFootfall(formattedToday)
     response.subscribe((data: any) => {
-      console.log(data)
-      // this.footfallViewResponse = data
-      // if (this.footfallViewResponse.serviceMessage.code = 200) {
-      //   this.slot01 = this.footfallViewResponse.result.slotValue01
-      //   this.slot02 = this.footfallViewResponse.result.slotValue02
-      //   this.slot03 = this.footfallViewResponse.result.slotValue03
-      //   this.slot04 = this.footfallViewResponse.result.slotValue04
-      //   this.slot05 = this.footfallViewResponse.result.slotValue05
-      //   this.slot06 = this.footfallViewResponse.result.slotValue06
-      //   this.slot07 = this.footfallViewResponse.result.slotValue07
-      // }
+      this.footfallViewResponse = data
+      if (this.footfallViewResponse.serviceMessage.code = 200) {
+        this.id = this.footfallViewResponse.result.id
+        this.slot01 = this.footfallViewResponse.result.slotValue01
+        this.slot02 = this.footfallViewResponse.result.slotValue02
+        this.slot03 = this.footfallViewResponse.result.slotValue03
+        this.slot04 = this.footfallViewResponse.result.slotValue04
+        this.slot05 = this.footfallViewResponse.result.slotValue05
+        this.slot06 = this.footfallViewResponse.result.slotValue06
+        this.slot07 = this.footfallViewResponse.result.slotValue07
+        this.spinner.hide()
+      }
     }, error => {
       console.log(error)
+      this.spinner.hide()
     });
+
   }
   submitForm() {
     // Handle form submission logic here
@@ -89,15 +101,11 @@ export class FootfallComponent implements OnInit {
     }
   }
 
-  updateCurrentDate() {
-    const now = new Date();
-    this.currentDate = now.toDateString(); // Adjust the date format as needed
-  }
-
   submitData() {
 
+    console.log('Form submitted!', this.slot01, this.slot02, this.slot03, this.slot04, this.slot05, this.slot06, this.slot07, this.slot08);
 
-
-    this.router.navigateByUrl("/home")
+    
+    
   }
 }
