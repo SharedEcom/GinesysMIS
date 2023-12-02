@@ -78,15 +78,6 @@ export class PromoSignageComponent implements OnInit {
     }
   }
 
-  showToaster(data:any, toastType: ToastTypes) {
-    this.toast.initiate({
-      title: data.serviceMessage.type,
-      content: data.serviceMessage.message,
-      show: true,
-      type: toastType
-    });
-  }
-
   increasePromoArraySize() {
     this.promoSignageArraySize++
     this.barcodeModelList.push(new BarcodeModel())
@@ -130,7 +121,7 @@ export class PromoSignageComponent implements OnInit {
       this.barcodeSaveResponse = data
       if (this.barcodeSaveResponse.serviceMessage.code == 201) {
         console.log('Data saved successfully')
-        this.showToaster(data, ToastTypes.success)
+        this.toast.showToaster(data, ToastTypes.success)
         // this.toast.initiate({
         //   title: data.serviceMessage.type,
         //   content: data.serviceMessage.message,
@@ -143,7 +134,7 @@ export class PromoSignageComponent implements OnInit {
       } else {
         // this.showCustomDanger(data.serviceMessage.type, data.serviceMessage.message, 10000);
         // this.toastr.showError(data.serviceMessage.message, data.serviceMessage.type)
-        this.showToaster(data, ToastTypes.error)
+        this.toast.showToaster(data, ToastTypes.error)
         // this.toast.initiate({
         //   title: data.serviceMessage.type,
         //   content: data.serviceMessage.message,
@@ -298,10 +289,10 @@ export class PromoSignageComponent implements OnInit {
           if (data.serviceMessage.code == 200) {
             this.fileUploadResponse = data.result
             this.currentFile = undefined;
-            this.showToaster(data, ToastTypes.success)
+            this.toast.showToaster(data, ToastTypes.success)
             this.spinner.hide()
           } else {
-            this.showToaster(data, ToastTypes.error)
+            this.toast.showToaster(data, ToastTypes.error)
           }
         }, (error: any) => {
           console.log(error)

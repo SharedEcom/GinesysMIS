@@ -16,7 +16,7 @@ export class ToastService {
   initiate(data: ToastInfo) {
     if (data.type) {
       // this.data.type = ToastTypes.error;
-      console.log(ToastTypes[data.type])
+      // console.log(ToastTypes[data.type])
     }
     this.data = { ...data, show: true, progressWidth: '100%' };
     this.open.next(this.data);
@@ -25,5 +25,14 @@ export class ToastService {
   hide() {
     this.data = { ...this.data, show: false };
     this.open.next(this.data);
+  }
+
+  showToaster(data:any, toastType: ToastTypes) {
+    this.initiate({
+      title: data.serviceMessage.type,
+      content: data.serviceMessage.message,
+      show: true,
+      type: toastType
+    });
   }
 }
