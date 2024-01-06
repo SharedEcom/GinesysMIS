@@ -2,120 +2,276 @@
     <app-header></app-header>
 </div>
 <div class="container">
-    <div style="text-align: center; padding: 20px;">
-        <p> </p>
+
+    <h1 class="display-6 text-danger text-center  "> <strong> Enter Foot Fall for the Day - {{ currentDate | date:'fullDate'}}</strong></h1>
+    <hr>
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot01"><strong> 01. From 08:00 am to 08:59 am </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot01" name="slot01" [(ngModel)]="slot01" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot02"><strong> 02. From 09:00 am to 09:59 am </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot02" name="slot02" [(ngModel)]="slot02" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot03"><strong> 03. From 10:00 am to 10:59 am </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot03" name="slot03" [(ngModel)]="slot03" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot04"><strong> 04. From 11:00 am to 11:59 am </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot04" name="slot04" [(ngModel)]="slot04" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot05"><strong> 05. From 12:00 pm to 12:59 pm </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot05" name="slot05" [(ngModel)]="slot05" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot06"><strong> 06. From 01:00 pm to 01:59 pm </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot06" name="slot06" [(ngModel)]="slot06" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot07"><strong> 07. From 02:00 pm to 02:59 pm </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot07" name="slot07" [(ngModel)]="slot07" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot08"><strong> 08. From 03:00 pm to 03:59 pm </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot08" name="slot08" [(ngModel)]="slot08" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot09"><strong> 09. From 04:00 pm to 04:59 pm </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot09" name="slot09" [(ngModel)]="slot09" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot10"><strong> 10. From 05:00 pm to 05:59 pm </strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot10" name="slot10" [(ngModel)]="slot10" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot11"><strong> 11. From 06:00 pm to 06:59 pm</strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot11" name="slot11" [(ngModel)]="slot11" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot12"><strong> 12. From 07:00 pm to 07:59 pm</strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot12" name="slot12" [(ngModel)]="slot12" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot13"><strong> 13. From 08:00 pm to 08:59 pm</strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot13" name="slot13" [(ngModel)]="slot13" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot14"><strong> 14. From 09:00 pm to 09:59 pm</strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot14" name="slot14" [(ngModel)]="slot14" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+    <div class="row m-2 d-flex align-items-center justify-content-center">
+        <div class="col">
+            <label for="slot15"><strong> 15. From 10:00 pm to 10:59 pm</strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot15" name="slot15" [(ngModel)]="slot15" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+        <div class="col">
+            <label for="slot16"><strong> 16. From 11:00 pm to 11:59 pm</strong></label>
+        </div>
+        <div class="col">
+            <input type="number" id="slot16" name="slot16" [(ngModel)]="slot16" required (keypress)="validateInput2($event)"
+                min="0" class="right-aligned-input form-control">
+        </div>
+    </div>
+
+    <!-- <div style="text-align: center; padding: 20px;">
         <h1> </h1>
         <p style="color: red; font-family: Arial, sans-serif;  font-size: 20px; font-weight: bold;">
-            <strong>Please Enter Foot Fall for the day - {{ currentDate }}</strong>
+            <strong>Please Enter Foot Fall for the Day - {{ currentDate | date:'fullDate' }}</strong>
+                       <strong>Please Enter Foot Fall for the day - {{ currentDate }}</strong> 
         </p>
         <p> </p>
-        <!---    <h1>Questionnaire</h1>
-    <form action="submit_answers.php" method="post">
-        Question 1  
-        <label for="question1">Question 1:</label>
-        <input type="text" id="question1" name="question1" required><br>
-
-        Question 2  
-        <label for="question2">Question 2:</label>
-        <input type="text" id="question2" name="question2" required><br>
-
-        ... Repeat the above block for the remaining questions up to 10 -->
-
-        <!-- Question 10  
-        <label for="question10">Question 10:</label>
-        <input type="text" id="question10" name="question10" required><br>
-
-        <input type="submit" value="Submit">
-    </form>    -->
         <form #questionForm="ngForm" ngSubmit="">
-            <!-- Question 1-10 -->
-            <div>
-                <label for="slot01"><strong> 01. Foot Fall from 10:00 am to 11:59 am </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot01" name="slot01" [(ngModel)]="slot01" required
-                    (input)="validateInput(slot01)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot01?.valid && questionForm.controls.slot01?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <label for="slot02"><strong> 02. Foot Fall from 12:00 pm to 01:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot02" name="slot02" [(ngModel)]="slot02" required
-                    (input)="validateInput(slot02)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot02?.valid && questionForm.controls.slot02?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <label for="slot03"><strong> 03. Foot Fall from 02:00 pm to 03:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot03" name="slot03" [(ngModel)]="slot03" required
-                    (input)="validateInput(slot03)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot03?.valid && questionForm.controls.slot03?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <label for="slot04"><strong> 04. Foot Fall from 04:00 pm to 05:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot04" name="slot04" [(ngModel)]="slot04" required
-                    (input)="validateInput(slot04)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot04?.valid && questionForm.controls.slot04?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <label for="slot05"><strong> 05. Foot Fall from 06:00 pm to 07:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot05" name="slot05" [(ngModel)]="slot05" required
-                    (input)="validateInput(slot05)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot05?.valid && questionForm.controls.slot05?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <label for="slot06"><strong> 06. Foot Fall from 08:00 pm to 09:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot06" name="slot06" [(ngModel)]="slot06" required
-                    (input)="validateInput(slot06)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot06?.valid && questionForm.controls.slot06?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <label for="slot07"><strong> 07. Foot Fall from 10:00 pm to 11:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot07" name="slot07" [(ngModel)]="slot07" required
-                    (input)="validateInput(slot07)" min="0" class="right-aligned-input">
-                <div *ngIf="!questionForm.controls.slot07?.valid && questionForm.controls.slot07?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
-                        than or equal to 0.</p>
-                </div>
-                <p> </p>
-                <!--                <label for="Slot08 "><strong> 08. Foot Fall from 10:00 pm to 11:59 pm </strong></label>
-                <span class="mx-5"></span>
-                <input type="number" id="slot08" name="slot08" [(ngModel)]="slot08" required
-                    (input)="validateInput(slot08)" min="0" class="right-aligned-input  ">
-                <div *ngIf="!questionForm.controls.slot08?.valid && questionForm.controls.slot08?.touched">
-                    <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater than or equal to 0.</p>
-                </div> -->
-                <p> </p>
-                <p> </p>
-            </div>
-
-            <!-- in case loop upto 8 
+            Question 1-10
+    <div>
+        <label for="slot01"><strong> 01. Foot Fall from 08:00 am to 08:59 am </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot01" name="slot01" [(ngModel)]="slot01" required (input)="validateInput(slot01)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot01?.valid && questionForm.controls.slot01?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot02"><strong> 02. Foot Fall from 09:00 am to 09:59 am </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot02" name="slot02" [(ngModel)]="slot02" required (input)="validateInput(slot02)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot02?.valid && questionForm.controls.slot02?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <p> </p>
+        <label for="slot03"><strong> 03. Foot Fall from 10:00 am to 10:59 am </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot03" name="slot03" [(ngModel)]="slot03" required (input)="validateInput(slot03)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot03?.valid && questionForm.controls.slot03?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot04"><strong> 04. Foot Fall from 11:00 am to 11:59 am </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot04" name="slot04" [(ngModel)]="slot04" required (input)="validateInput(slot04)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot04?.valid && questionForm.controls.slot04?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <p> </p>
+        <label for="slot05"><strong> 05. Foot Fall from 12:00 pm to 12:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot05" name="slot05" [(ngModel)]="slot05" required (input)="validateInput(slot05)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot05?.valid && questionForm.controls.slot05?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot06"><strong> 06. Foot Fall from 01:00 pm to 01:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot06" name="slot06" [(ngModel)]="slot06" required (input)="validateInput(slot06)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot06?.valid && questionForm.controls.slot06?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <p> </p>
+        <label for="slot07"><strong> 07. Foot Fall from 02:00 pm to 02:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot07" name="slot07" [(ngModel)]="slot07" required (input)="validateInput(slot07)"
+            min="0" class="right-aligned-input">
+        <div *ngIf="!questionForm.controls.slot07?.valid && questionForm.controls.slot07?.touched">
+            <p style="color: red;margin-top: 5px; font-weight: bold;">Please enter a valid numeric Input greater
+                than or equal to 0.</p>
+        </div>
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot08"><strong> 08. Foot Fall from 03:00 pm to 03:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot08" name="slot08" [(ngModel)]="slot08" required (input)="validateInput(slot08)"
+            min="0" class="right-aligned-input">
+        <p> </p>
+        <label for="slot09"><strong> 09. Foot Fall from 04:00 pm to 04:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot09" name="slot09" [(ngModel)]="slot09" required (input)="validateInput(slot09)"
+            min="0" class="right-aligned-input">
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot10"><strong> 10. Foot Fall from 05:00 pm to 05:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot10" name="slot10" [(ngModel)]="slot10" required (input)="validateInput(slot10)"
+            min="0" class="right-aligned-input">
+        <p> </p>
+        <label for="slot11"><strong> 11. Foot Fall from 06:00 pm to 06:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot11" name="slot11" [(ngModel)]="slot11" required (input)="validateInput(slot11)"
+            min="0" class="right-aligned-input">
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot12"><strong> 12. Foot Fall from 07:00 pm to 07:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot12" name="slot12" [(ngModel)]="slot12" required (input)="validateInput(slot12)"
+            min="0" class="right-aligned-input">
+        <p> </p>
+        <label for="slot13"><strong> 13. Foot Fall from 08:00 pm to 08:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot13" name="slot13" [(ngModel)]="slot13" required (input)="validateInput(slot13)"
+            min="0" class="right-aligned-input">
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot14"><strong> 14. Foot Fall from 09:00 pm to 09:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot14" name="slot14" [(ngModel)]="slot14" required (input)="validateInput(slot14)"
+            min="0" class="right-aligned-input">
+        <p> </p>
+        <label for="slot15"><strong> 15. Foot Fall from 10:00 pm to 10:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot15" name="slot15" [(ngModel)]="slot15" required (input)="validateInput(slot15)"
+            min="0" class="right-aligned-input">
+        <label> &nbsp;&nbsp;&nbsp;&nbsp; </label>
+        <label for="slot16"><strong> 16. Foot Fall from 11:00 pm to 11:59 pm </strong></label>
+        <span class="mx-2"></span>
+        <input type="number" id="slot16" name="slot16" [(ngModel)]="slot16" required (input)="validateInput(slot16)"
+            min="0" class="right-aligned-input"> -->
+    <!-- in case loop upto 8 
         <div *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]">
             <label for="{{ i }}.">  {{ i }}. : </label>
           <input type="text" id="question{{ i }}" name="question{{ i }}" ngModel required><br>
           <p> </p>
         </div> 
 -->
-            <div class="m-4 pt-4 d-flex justify-content-center align-items-justify">
-                <button class="btn btn-success" type="button" (click)="submitData()">Submit</button>
-            </div>
 
-            <!-- <button type="submit">Submit</button> -->
-        </form>
-    </div>
-    <div>
+</div>
+
+<div class="m-4 pt-4 d-flex justify-content-evenly align-items-center">
+    <button class="btn btn-success" type="button" (click)="submitData()">Submit</button>
+    <div><strong> Total footfall: {{ slot01 + slot02 + slot03 + slot04 + slot05 + slot06 + slot07 + slot08 + slot09 +
+            slot10 +
+            slot11 + slot12 + slot13 + slot14 + slot15 + slot16 }}</strong></div>
+</div>
+
+<div>

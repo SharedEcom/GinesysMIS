@@ -20,6 +20,7 @@ import { ItemInfoComponent } from './components/main/common/modal/item-info/item
 import { SiteListComponent } from './components/main/common/modal/site-list/site-list.component';
 import { PromoSignageComponent } from './components/main/promo-signage/promo-signage.component';
 import { FootfallComponent } from './components/main/footfall/footfall.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FootfallComponent } from './components/main/footfall/footfall.component
     FormsModule,
     NgbModule,
     BrowserAnimationsModule,
-    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' })
+    NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
+    // AgGridModule.ag-AgGridModule (null), 
   ],
   providers: [],
   bootstrap: [AppComponent]

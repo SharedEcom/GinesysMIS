@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ExcelService {
 
-  BASE_URL: string = "http://localhost:8080/v1/promo-signage/barcode/bulk-upload/"
+//  BASE_URL: string = "http://localhost:8080/v1/promo-signage/barcode/bulk-upload/"
+
+  BASE_URL: string ="https://signageauth.vmart.co.in/v1/promo-signage/barcode/bulk-upload/" 
 
   DOWNLOAD_EMPTY_EXCEL_URL: string = "download-template"
   UPLOAD_EXCEL_URL: string = "upload"

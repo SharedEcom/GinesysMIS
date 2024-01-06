@@ -9,10 +9,13 @@ import { FootfallViewResponse } from 'src/app/models/screens/footfall/footfall-v
 export class FootfallService {
 
   BASE_URL: string = "http://localhost:8080/v1/footfall/"
+
+//  BASE_URL: string = "https://signageauth.vmart.co.in/v1/footfall/"
   VIEW_FOOT_FALL: String = "view"
-  ADD_FOOT_FALL: String = "add"
-  UPDATE_FOOT_FALL: String = "update/"
   BEARER = 'Bearer '
+  ADD_FOOT_FALL: String = "add" 
+  UPDATE_FOOT_FALL: String = "update/"
+//  BEARER = 'Bearer '
 
   constructor(private httpClient: HttpClient) { }
 
@@ -35,7 +38,7 @@ export class FootfallService {
     })
 
     const httpHeaders = new HttpHeaders().set("Authorization", this.BEARER + sessionStorage.getItem('authToken'))
-    return this.httpClient.post<FootfallViewResponse>(this.BASE_URL + this.ADD_FOOT_FALL, request, { headers: httpHeaders })
+    return this.httpClient.post<FootfallViewResponse>(this.BASE_URL + this.ADD_FOOT_FALL , request, { headers: httpHeaders })
   }
 
   public updateFootfall(request: any, id: any): Observable<FootfallViewResponse> {

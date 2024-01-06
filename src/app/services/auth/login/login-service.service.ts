@@ -10,9 +10,9 @@ import { LoginRequest } from '../../../models/auth/login-request';
 })
 export class LoginServiceService {
 
-  BASE_URL: string = "http://localhost:8080/v1/auth/" 
+//  BASE_URL: string = "http://localhost:8080/v1/auth/" 
 //  BASE_URL: string = "http://10.100.1.106:8080/v1/auth/" 
-//   BASE_URL: string = "https://signageauth.vmart.co.in/v1/auth/" 
+   BASE_URL: string = "https://signageauth.vmart.co.in/v1/auth/" 
   BEARER = 'Bearer '
   
   constructor(private httpClient: HttpClient) { }

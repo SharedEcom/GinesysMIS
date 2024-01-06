@@ -8,9 +8,9 @@ import { PromoSignageResponse } from '../../../models/screens/promo-signage-prin
 })
 export class PromoSignagePrintService {
 
-  // BASE_URL: string = "http://localhost:8080/v1/promo-signage/"
- // BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
-BASE_URL: string = "https://signageauth.vmart.co.in/v1/promo-signage/" 
+// BASE_URL: string = "http://localhost:8080/v1/promo-signage/"
+// BASE_URL: string = "http://10.100.1.106:8080/v1/promo-signage/"
+ BASE_URL: string = "https://signageauth.vmart.co.in/v1/promo-signage/" 
 SAVE_BARCODE: String = "barcode/print"
   BEARER = 'Bearer '
 

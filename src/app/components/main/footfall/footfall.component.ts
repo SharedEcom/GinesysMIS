@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { SessionService } from '../../../services/auth/session/session.service';
 import { Router } from '@angular/router';
 import { NavbarService } from 'src/app/services/common/navbar/navbar.service';
@@ -13,6 +13,7 @@ import { ToastTypes } from 'src/app/models/toast/toast-types';
   templateUrl: './footfall.component.html',
   styleUrls: ['./footfall.component.css']
 })
+
 export class FootfallComponent implements OnInit {
 
   token: string = ''
@@ -27,6 +28,14 @@ export class FootfallComponent implements OnInit {
   slot06: number = 0;
   slot07: number = 0;
   slot08: number = 0;
+  slot09: number = 0;
+  slot10: number = 0;
+  slot11: number = 0;
+  slot12: number = 0;
+  slot13: number = 0;
+  slot14: number = 0;
+  slot15: number = 0;
+  slot16: number = 0;
 
   currentDate: string = '';
 
@@ -63,6 +72,31 @@ export class FootfallComponent implements OnInit {
       // You can also set a flag or error message here to handle the validation state
       console.log('Invalid input:', value);
     }
+  }
+
+  validateInput2(e: any) {
+
+    var data = {
+      serviceMessage: {
+        type: 'Input Error',
+        message: 'Invalid Input Provided'
+      }
+    }
+
+    const charCode = e.which ? e.which : e.keyCode;
+    if (((charCode > 31 && (charCode < 48 || charCode > 57)) || (charCode === 13 || charCode === 8))) {
+      this.toast.showToaster(data, ToastTypes.error)
+      setTimeout(() => {
+        e.target.value = 0
+      }, 100)
+    }
+
+
+    // Check if the input is numeric and >= 0
+    // if (isNaN(value) || value < 0) {
+    //   // You can also set a flag or error message here to handle the validation state
+    //   console.log('Invalid input:', value);
+    // }
   }
 
   submitData() {
@@ -128,13 +162,23 @@ export class FootfallComponent implements OnInit {
       'slot04': this.slot04,
       'slot05': this.slot05,
       'slot06': this.slot06,
-      'slot07': this.slot07
+      'slot07': this.slot07,
+      'slot08': this.slot08,
+      'slot09': this.slot09,
+      'slot10': this.slot10,
+      'slot11': this.slot11,
+      'slot12': this.slot12,
+      'slot13': this.slot13,
+      'slot14': this.slot14,
+      'slot15': this.slot15,
+      'slot16': this.slot16
     }
   }
 
   loadDataOnScreenload() {
+    this.currentDate = this.getCurrentDateInDDMMMYYYY()
     this.spinner.show()
-    let response = this.footfallService.viewFootfall(this.getCurrentDateInDDMMMYYYY())
+    let response = this.footfallService.viewFootfall(this.currentDate)
     response.subscribe((data: any) => {
       this.footfallViewResponse = data
       if (this.footfallViewResponse.serviceMessage.code === 200) {
@@ -146,6 +190,15 @@ export class FootfallComponent implements OnInit {
         this.slot05 = this.footfallViewResponse.result.slotValue05
         this.slot06 = this.footfallViewResponse.result.slotValue06
         this.slot07 = this.footfallViewResponse.result.slotValue07
+        this.slot08 = this.footfallViewResponse.result.slotValue08
+        this.slot09 = this.footfallViewResponse.result.slotValue09
+        this.slot10 = this.footfallViewResponse.result.slotValue10
+        this.slot11 = this.footfallViewResponse.result.slotValue11
+        this.slot12 = this.footfallViewResponse.result.slotValue12
+        this.slot13 = this.footfallViewResponse.result.slotValue13
+        this.slot14 = this.footfallViewResponse.result.slotValue14
+        this.slot15 = this.footfallViewResponse.result.slotValue15
+        this.slot16 = this.footfallViewResponse.result.slotValue16
         this.spinner.hide()
       } else {
         this.toast.showToaster(data, ToastTypes.info)
